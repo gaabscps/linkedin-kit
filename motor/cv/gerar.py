@@ -64,10 +64,12 @@ MESES = {
 ROTULOS = {
     "pt": {"experiencia": "Experiência", "projetos": "Projetos", "skills": "Competências",
            "idiomas": "Idiomas", "formacao": "Formação", "ano": "a", "mes": "m",
-           "atual": "atual", "ate": " a "},
+           "atual": "atual", "ate": " a ", "certificacoes": "Certificações",
+           "validade": "válida até"},
     "en": {"experiencia": "Experience", "projetos": "Projects", "skills": "Skills",
            "idiomas": "Languages", "formacao": "Education", "ano": "y", "mes": "m",
-           "atual": "present", "ate": " to "},
+           "atual": "present", "ate": " to ", "certificacoes": "Certifications",
+           "validade": "valid until"},
 }
 
 
@@ -238,6 +240,26 @@ def monta_skills(fatos, variante, idioma):
     return f'<section class="secao"><h2>{ROTULOS[idioma]["skills"]}</h2>{"".join(linhas)}</section>'
 
 
+def monta_certificacoes(fatos, variante, idioma):
+    """Certificações com instituição, ano e validade, quando a variante pede."""
+    ids = variante.get("certificacoes") or []
+    if not ids:
+        return ""
+    catalogo = por_id(fatos.get("certificacoes"))
+    r = ROTULOS[idioma]
+    linhas = []
+    for cid in ids:
+        cert = catalogo[cid]
+        detalhes = [str(x) for x in (cert.get("instituicao"), cert.get("ano")) if x]
+        if cert.get("validade"):
+            detalhes.append(f'{r["validade"]} {cert["validade"]}')
+        linhas.append(f"""<div class="linha-skill">
+  <div class="skill-rotulo">{e(loc(cert.get("nome"), idioma))}</div>
+  <div class="skill-itens">{e(", ".join(detalhes))}</div>
+</div>""")
+    return f'<section class="secao"><h2>{r["certificacoes"]}</h2>{"".join(linhas)}</section>'
+
+
 def monta_rodape(fatos, variante, idioma):
     """Idiomas e formação lado a lado."""
     r = ROTULOS[idioma]
@@ -276,6 +298,7 @@ def monta_documento(fatos, contato, variante, template, nome):
         monta_experiencias(fatos, variante, idioma),
         monta_projetos(fatos, variante, idioma),
         monta_skills(fatos, variante, idioma),
+        monta_certificacoes(fatos, variante, idioma),
         monta_rodape(fatos, variante, idioma),
     ])
     return (template

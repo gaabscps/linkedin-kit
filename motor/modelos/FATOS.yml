@@ -92,6 +92,14 @@ projetos: []
 skills: []
 
 # ---------------------------------------------------------------------------
+# CERTIFICAÇÕES (opcional): cursos com certificado, registro profissional e
+# habilitações. Cada item com id, nome (texto, ou pt e en), instituicao, ano e,
+# quando o certificado vence, validade (o ano em que vence).
+# ---------------------------------------------------------------------------
+
+certificacoes: []
+
+# ---------------------------------------------------------------------------
 # IDIOMAS: cada item com lingua (pt e en) e nivel (pt e en).
 # ---------------------------------------------------------------------------
 

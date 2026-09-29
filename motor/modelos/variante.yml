@@ -39,5 +39,8 @@ projetos: []
 # Ids dos grupos de competências, na ordem.
 skills: []
 
+# Ids das certificações, na ordem. Vazio quando não há.
+certificacoes: []
+
 # Ids das formações, na ordem.
 formacao: []

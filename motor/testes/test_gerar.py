@@ -73,6 +73,26 @@ class TestDocumento(unittest.TestCase):
         self.assertNotIn("{{", doc)
         self.assertNotIn("None", doc)
 
+    def test_certificacoes_entram_quando_a_variante_pede(self):
+        fatos = {**FATOS, "certificacoes": [
+            {"id": "acls", "nome": "ACLS", "instituicao": "Instituto Teste", "ano": 2023, "validade": 2025},
+        ]}
+        doc = gerar.monta_documento(fatos, CONTATO, {**VARIANTE, "certificacoes": ["acls"]}, TEMPLATE, "x")
+        self.assertIn("Certificações", doc)
+        self.assertIn("ACLS", doc)
+        self.assertIn("Instituto Teste, 2023, válida até 2025", doc)
+
+    def test_certificacao_sem_validade(self):
+        fatos = {**FATOS, "certificacoes": [{"id": "oab", "nome": "OAB/SP", "ano": 2016}]}
+        doc = gerar.monta_documento(fatos, CONTATO, {**VARIANTE, "idioma": "en", "certificacoes": ["oab"]}, TEMPLATE, "x")
+        self.assertIn("Certifications", doc)
+        self.assertIn("2016", doc)
+        self.assertNotIn("valid until", doc)
+
+    def test_sem_certificacoes_na_variante_nao_ha_secao(self):
+        doc = gerar.monta_documento(FATOS, CONTATO, VARIANTE, TEMPLATE, "x")
+        self.assertNotIn("Certificações", doc)
+
     def test_documento_en_traduz_periodo(self):
         doc = gerar.monta_documento(FATOS, CONTATO, {**VARIANTE, "idioma": "en"}, TEMPLATE, "Ana-CV-EN")
         self.assertIn("Mar/2021 to present", doc)
