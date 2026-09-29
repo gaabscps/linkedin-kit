@@ -11,9 +11,11 @@ Do assunto ao arquivo pronto para colar, no tom da pessoa.
 
 1. **Ler**, nesta ordem: `motor/regras/verdade.md`, `motor/regras/escrita.md`,
    `motor/regras/linkedin.md`, `eu/EXCECOES.md` (vence as regras),
-   `eu/VOZ.md`, `eu/MATERIA-PRIMA.md`, e os três posts mais recentes de
-   `eu/posts/`. Os posts servem para não repetir assunto e para achar o próximo
-   número.
+   `eu/VOZ.md`, `eu/MATERIA-PRIMA.md`, `eu/PERFIL.md` e os três posts mais
+   recentes de `eu/posts/`. Os posts servem para não repetir assunto e para
+   achar o próximo número. O perfil serve para o post não ser o Sobre
+   repetido: a mesma história pode virar post, mas com outro ângulo (a cena, a
+   lição, o que ainda faltava).
 
 2. **Pauta.** Se a pessoa trouxe o assunto, use. Se não, sugira duas ou três
    pautas de `## O que ainda rende post`, cada uma com uma linha dizendo por
@@ -53,7 +55,8 @@ Do assunto ao arquivo pronto para colar, no tom da pessoa.
    os posts que já existem em `eu/posts/`) e um nome curto do assunto, sem
    acento e com hífens. Copie `motor/modelos/post.md` para
    `eu/posts/NNN-assunto.md`, preencha o cabeçalho e as seções `## Texto`,
-   `## Correções feitas` e `## Decisões`. Crie ao lado
+   `## Conferência` (o resultado de cada item do passo 6), `## Correções
+   feitas` e `## Decisões`. Crie ao lado
    `eu/posts/NNN-assunto-PARA-COLAR.txt`, pela seção "Formato na hora de
    colar" de `motor/regras/linkedin.md`: um parágrafo por linha, linha em
    branco entre parágrafos, só o corpo.

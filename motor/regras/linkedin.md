@@ -96,6 +96,22 @@ passagem ao anterior, segue a cadência normal.
 
 ---
 
+## Headline
+
+A frase logo abaixo do nome. Ela aparece nos resultados de busca, antes de
+alguém abrir o perfil, e é o campo que mais pesa quando um recrutador procura
+por palavra.
+
+- **Começa pelo cargo real**, e depois diz o que a pessoa faz, com as palavras
+  que o público dela busca: "Enfermeira Coordenadora de UTI | Protocolos e
+  indicadores".
+- **Nunca declara transição** ("em transição para...", "aspirante a..."): ver
+  `motor/regras/escrita.md`, "Reposicionamento se deduz".
+- **Cabe no limite do LinkedIn**, de 220 caracteres (observado em 2026-09;
+  conferir se ainda vale).
+
+---
+
 ## Onde cada coisa vai no perfil
 
 | Conteúdo | Campo do LinkedIn |
@@ -107,7 +123,9 @@ passagem ao anterior, segue a cadência normal.
 
 O "Sobre" é cortado depois de duas ou três linhas. Material bom enterrado no
 quarto parágrafo não é lido. Então as duas primeiras linhas carregam o
-diferencial, e não a biografia.
+diferencial, e não a biografia. Teto indicativo: o mesmo do post, 250
+palavras; cada parágrafo a mais precisa trazer um fato que os outros não
+trazem.
 
 ---
 

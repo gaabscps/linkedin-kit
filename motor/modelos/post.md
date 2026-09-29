@@ -34,6 +34,10 @@ O título acima vira "Post NNN: assunto".
 
 <!-- Preenchida pelo /registrar-aprendizado: o texto exatamente como foi ao ar. -->
 
+## Conferência
+
+<!-- O resultado de cada item do passo 6 do /escrever-post: palavras, corte do "ver mais", proibidos, travessão, origem de cada fato e sigilo. -->
+
 ## Correções feitas
 
 <!-- Acentos, concordância e digitação corrigidos, para ela conferir e reverter. -->

@@ -177,7 +177,9 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
    trata o leitor, tamanho e ritmo das frases, pontuação característica,
    expressões que são dela, humor, o que ela evita.
 3. Pergunte, uma por vez: que tipo de post de LinkedIn você detesta ler? Que
-   palavra você nunca usaria?
+   palavra você nunca usaria? Respostas de entrevista (desta parte ou da Parte
+   0) podem confirmar um traço que apareceu nos textos, mas não criam um traço
+   sozinhas; a exceção são os proibidos, que ela declara.
 4. Guarde os textos colados, inteiros, e as respostas brutas em `## Voz` do
    `eu/MATERIA-PRIMA.md`. Grave a análise em `eu/VOZ.md`: `## Tom`,
    `## Estrutura que ela usa`,
@@ -202,15 +204,21 @@ Leia `motor/regras/linkedin.md` antes.
 3. **Experiências:** a descrição de cada uma, a partir dos bullets aprovados.
 4. **Onde cada coisa vai:** a tabela dela.
 5. **Configuração:** os lembretes da seção "Configuração, não texto", como
-   caixas para ela marcar.
+   caixas para ela marcar. Uma delas pede decisão: os cargos que ela procura,
+   que vão no "Open to Work" só para recrutadores. Pergunte, e grave os cargos
+   na própria caixa. Eles nunca entram no texto do perfil.
 
 Todo texto que vai ser colado fica **sem quebra de linha dentro do parágrafo**.
-Grave em `eu/PERFIL.md`.
+Grave em `eu/PERFIL.md`, com as decisões. Crie também
+`eu/PERFIL-PARA-COLAR.txt`, só com o que vai para o LinkedIn: headline, Sobre
+e a descrição de cada experiência, cada bloco com um rótulo de uma linha, sem
+decisões nem comentários. É dele que ela copia.
 
 ## Parte 4: Primeiro post
 
 1. Siga os passos de `.claude/skills/escrever-post/SKILL.md`, com uma história
-   de `## O que ainda rende post`.
+   de `## O que ainda rende post`. O post tem o commit dele (passo 9 daquela
+   skill), e o fechamento da Parte 4 tem outro, depois da cadência.
 2. Pergunte quantos posts por semana ela consegue manter sem virar obrigação, e
    em que dias. Grave em `## Cadência` do `eu/VOZ.md`.
 3. Explique o ciclo: depois de publicar, ela roda `/registrar-aprendizado` e
