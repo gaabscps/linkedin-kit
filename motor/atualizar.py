@@ -97,14 +97,27 @@ def existe_em(raiz, ref, caminho):
     return bool(git(raiz, "ls-tree", "-r", "--name-only", ref, "--", caminho).stdout.strip())
 
 
+def arquivos_em(raiz, ref, caminhos):
+    """Arquivos rastreados em `ref` dentro dos caminhos dados."""
+    saida = git(raiz, "ls-tree", "-r", "--name-only", ref, "--", *caminhos).stdout
+    return {linha for linha in saida.splitlines() if linha}
+
+
 def trocar_motor(raiz, de, para):
-    """Apaga os caminhos do motor, traz os da versão nova e commita só eles."""
-    tag = f"v{para}"
-    presentes = [c for c in CAMINHOS_MOTOR if existe_em(raiz, "HEAD", c) or existe_em(raiz, tag, c)]
-    git(raiz, "rm", "-r", "-q", "--ignore-unmatch", "--", *presentes)
-    novos = [c for c in presentes if existe_em(raiz, tag, c)]
+    """Troca os arquivos do kit pela versão nova e commita só os caminhos do motor.
+
+    Só sai o que pertence ao kit (existe na versão antiga ou na nova). Um
+    arquivo que só a pessoa criou, como uma skill dela, fica.
+    """
+    antiga, nova = f"v{de}", f"v{para}"
+    do_kit = arquivos_em(raiz, antiga, CAMINHOS_MOTOR) | arquivos_em(raiz, nova, CAMINHOS_MOTOR)
+    remover = sorted(arquivos_em(raiz, "HEAD", CAMINHOS_MOTOR) & do_kit)
+    if remover:
+        git(raiz, "rm", "-q", "--", *remover)
+    novos = [c for c in CAMINHOS_MOTOR if existe_em(raiz, nova, c)]
     if novos:
-        git(raiz, "checkout", tag, "--", *novos)
+        git(raiz, "checkout", nova, "--", *novos)
+    presentes = [c for c in CAMINHOS_MOTOR if existe_em(raiz, "HEAD", c) or existe_em(raiz, nova, c)]
     git(raiz, "commit", "-q", "-m", f"motor: atualiza de v{de} para v{para}", "--", *presentes)
 
 

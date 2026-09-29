@@ -142,6 +142,17 @@ class TestAtualizar(unittest.TestCase):
         self.assertEqual(codigo, 0, saida)
         self.assertEqual(self.ler("motor/regras/a.md"), "regra a v2\n")
 
+    def test_skill_propria_da_pessoa_sobrevive_a_atualizacao(self):
+        self.publicar_v110()
+        escreve(self.copia, ".claude/skills/minha/SKILL.md", "skill dela\n")
+        git(self.copia, "add", ".claude/skills/minha/SKILL.md")
+        git(self.copia, "commit", "-q", "-m", "skill dela")
+        codigo, saida = self.rodar("aplicar", "--ignorar-edicoes")
+        self.assertEqual(codigo, 0, saida)
+        self.assertEqual(self.ler(".claude/skills/minha/SKILL.md"), "skill dela\n")
+        self.assertIn(".claude/skills/minha/SKILL.md", git(self.copia, "ls-files"))
+        self.assertEqual(self.ler("motor/regras/a.md"), "regra a v2\n")
+
     def test_mudanca_nao_salva_bloqueia_mesmo_ignorando(self):
         self.publicar_v110()
         escreve(self.copia, "motor/regras/a.md", "rascunho\n")
