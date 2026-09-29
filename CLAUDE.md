@@ -27,8 +27,9 @@ e não improvise a entrevista fora da skill.
 
 O repositório tem duas partes:
 
-- **O motor:** `CLAUDE.md`, `README.md`, `.gitignore`, `.claude/skills/` e
-  `motor/`. É trocado inteiro pelo `/atualizar` quando sai versão nova.
+- **O motor:** `CLAUDE.md`, `README.md`, `.gitignore`,
+  `.claude/settings.json`, `.claude/skills/` e `motor/`. É trocado inteiro
+  pelo `/atualizar` quando sai versão nova.
 - **O conteúdo:** `eu/`. É da pessoa, e nenhuma atualização mexe nele.
 
 **Nunca edite o motor a pedido da pessoa.** Se ela quer mudar uma regra, o

@@ -5,6 +5,14 @@ O que mudou em cada versão do motor, da mais nova para a mais antiga. O
 escrita em português simples, dizendo o que muda para a pessoa, e não o que
 mudou no código.
 
+## v1.2.0
+
+- O Claude agora avisa sozinho, ao abrir uma conversa, quando sai versão nova
+  do kit. Você não precisa mais esperar alguém contar.
+- Se você está atualizando agora a partir de uma versão anterior, digite
+  `/atualizar` mais uma vez depois desta atualização: é a segunda rodada que
+  liga o aviso.
+
 ## v1.1.0
 
 - Não precisa mais de conta no GitHub para começar: dá para baixar o kit em

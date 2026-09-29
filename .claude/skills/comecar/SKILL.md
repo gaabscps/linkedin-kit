@@ -249,4 +249,4 @@ e mostre os comandos:
 | `/registrar-aprendizado` | Depois de publicar. |
 | `/montar-cv` | Quando for se candidatar a uma vaga. |
 | `/comecar fatos` | Quando mudar de emprego ou fizer um curso. |
-| `/atualizar` | Quando avisarem que saiu versão nova do kit. |
+| `/atualizar` | Quando eu avisar, ao abrir uma conversa, que saiu versão nova do kit. |

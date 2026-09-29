@@ -61,7 +61,7 @@ autorize.
 | `/escrever-post` | Quando quiser postar. |
 | `/registrar-aprendizado` | Depois de publicar: você cola o que foi ao ar e o kit aprende com o que você mudou. |
 | `/montar-cv` | Quando for se candidatar: você cola a vaga e sai o PDF. |
-| `/atualizar` | Quando avisarem que saiu versão nova do kit. |
+| `/atualizar` | Quando o Claude avisar, ao abrir uma conversa, que saiu versão nova do kit. |
 
 ---
 
@@ -70,7 +70,8 @@ autorize.
 - **A pasta `eu/` é sua.** Tudo o que é seu mora ali, e nenhuma atualização
   mexe nela.
 - **Não edite o motor:** `CLAUDE.md`, `README.md`, `.gitignore`,
-  `.claude/skills/` e `motor/`. A próxima atualização apagaria a sua mudança.
+  `.claude/settings.json`, `.claude/skills/` e `motor/`. A próxima atualização
+  apagaria a sua mudança.
 - **Discorda de uma regra?** Peça ao Claude para registrar a exceção em
   `eu/EXCECOES.md`. Ela vence a regra do motor, e a atualização não apaga.
 
@@ -117,6 +118,12 @@ de perguntar) e quer passá-las adiante:
 Na primeira publicação, antes da primeira tag: preencha `motor/ORIGEM` com o
 endereço do repositório no GitHub (é de lá que as cópias baixam as
 atualizações) e marque o repositório como template nas configurações do GitHub.
+
+Um caminho novo no motor (acrescentado em `motor/kit.py`) só é conhecido pelo
+script novo. Uma cópia que atualiza com o script antigo fica sem o arquivo
+novo, e o `/atualizar` seguinte, já com o script novo, completa o que falta.
+Por isso a entrada do `NOVIDADES.md` dessa versão pede para rodar
+`/atualizar` duas vezes.
 
 Não rode `/comecar` na pasta de manutenção: ele trocaria o nome do seu remote
 `origin` para `kit`, como faz com quem clona o template. Para desfazer:

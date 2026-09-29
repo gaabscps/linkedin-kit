@@ -6,8 +6,8 @@ description: Use quando a pessoa pedir para atualizar o kit, disser que saiu ver
 # Atualizar o kit
 
 Traz as melhorias do kit para esta cópia. Só o motor muda (`CLAUDE.md`,
-`README.md`, `.gitignore`, `.claude/skills/` e `motor/`); a pasta `eu/` fica
-intacta.
+`README.md`, `.gitignore`, `.claude/settings.json`, `.claude/skills/` e
+`motor/`); a pasta `eu/` fica intacta.
 
 ## Passos
 

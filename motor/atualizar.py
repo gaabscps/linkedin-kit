@@ -4,14 +4,18 @@
 Uso:
     python3 motor/atualizar.py verificar
     python3 motor/atualizar.py aplicar [--ignorar-edicoes]
+    python3 motor/atualizar.py avisar
 
-A primeira linha da saída é sempre "ESTADO: <estado>". O endereço do template
+Em verificar e aplicar, a primeira linha da saída é sempre "ESTADO: <estado>".
+O avisar é o do início de sessão (.claude/settings.json): imprime um aviso só
+quando há versão nova, e fica calado em qualquer outro caso. O endereço do template
 vem de motor/ORIGEM e vira o remote "kit". Cada versão do template é uma tag
 vX.Y.Z, e a tag da versão atual da cópia é a referência para saber se a pessoa
 editou algum arquivo do motor.
 """
 
 import argparse
+import os
 import re
 import subprocess
 import sys
@@ -26,6 +30,7 @@ CODIGOS = {
     "nao-salvo": 3, "sem-referencia": 4, "editado": 5, "erro-rede": 6,
 }
 TAG_REMOTA = re.compile(r"refs/tags/v(\d+\.\d+\.\d+)$")
+TEMPO_DO_AVISO = 5
 CABECALHO_VERSAO = re.compile(r"(\d+\.\d+\.\d+)")
 
 
@@ -66,12 +71,17 @@ def garantir_remote(raiz, url):
         git(raiz, "remote", "set-url", REMOTE, url)
 
 
+def maior_versao(saida_ls_remote):
+    """A maior versão entre as tags vX.Y.Z listadas, ou None."""
+    versoes = [m.group(1) for linha in saida_ls_remote.splitlines() if (m := TAG_REMOTA.search(linha))]
+    return max(versoes, key=versao_tupla) if versoes else None
+
+
 def ultima_versao_remota(raiz):
     r = git(raiz, "ls-remote", "--tags", REMOTE, checar=False)
     if r.returncode != 0:
         raise Parada("erro-rede", f"Não consegui falar com a origem do kit.\n{r.stderr.strip()}")
-    versoes = [m.group(1) for linha in r.stdout.splitlines() if (m := TAG_REMOTA.search(linha))]
-    return max(versoes, key=versao_tupla) if versoes else None
+    return maior_versao(r.stdout)
 
 
 def buscar(raiz):
@@ -121,6 +131,26 @@ def trocar_motor(raiz, de, para):
     git(raiz, "commit", "-q", "-m", f"motor: atualiza de v{de} para v{para}", "--", *presentes)
 
 
+def completar(raiz, versao):
+    """Traz de volta os arquivos do motor da versão atual que faltam na pasta.
+
+    Acontece quando a atualização foi feita pelo script de uma versão anterior,
+    que não conhecia um caminho novo do motor. Devolve os caminhos trazidos.
+    """
+    tag = f"v{versao}"
+    if git(raiz, "rev-parse", "--verify", "--quiet", f"refs/tags/{tag}", checar=False).returncode != 0:
+        return []
+    faltando = sorted(
+        caminho
+        for caminho in arquivos_em(raiz, tag, CAMINHOS_MOTOR) - arquivos_em(raiz, "HEAD", CAMINHOS_MOTOR)
+        if not (raiz / caminho).exists()
+    )
+    if faltando:
+        git(raiz, "checkout", tag, "--", *faltando)
+        git(raiz, "commit", "-q", "-m", f"motor: completa a {tag}", "--", *faltando)
+    return faltando
+
+
 def novidades_entre(texto, de, ate):
     """Devolve as seções do NOVIDADES.md com versão maior que `de` e até `ate`."""
     blocos = re.split(r"(?m)^## v", texto)
@@ -139,9 +169,13 @@ def verificar(raiz):
                      "Este kit ainda não tem endereço de origem (motor/ORIGEM vazio), então não há de onde atualizar.")
     garantir_remote(raiz, url)
     local = versao_local(raiz)
+    completados = completar(raiz, local)
     ultima = ultima_versao_remota(raiz)
     if ultima is None or versao_tupla(ultima) <= versao_tupla(local):
-        return "atualizado", f"Você já está na versão mais nova (v{local})."
+        mensagem = f"Você já está na versão mais nova (v{local})."
+        if completados:
+            mensagem += "\nCompletei arquivos do motor que faltavam: " + ", ".join(completados) + "."
+        return "atualizado", mensagem
     buscar(raiz)
     pendentes = nao_salvos(raiz)
     if pendentes:
@@ -168,12 +202,40 @@ def aplicar(raiz, ignorar_edicoes=False):
     return "aplicado", f"Motor atualizado de v{local} para v{ultima}.\n\n{novidades_entre(texto, local, ultima)}"
 
 
+def avisar(raiz):
+    """Devolve o aviso de versão nova para o início da sessão, ou "" se não há.
+
+    Só lista as tags da origem: não cria remote nem baixa nada. Qualquer falha
+    (sem internet, sem git, origem fora do ar, demora) vira silêncio.
+    """
+    url = ler_origem(raiz)
+    if not url:
+        return ""
+    try:
+        local = versao_local(raiz)
+        r = subprocess.run(["git", "ls-remote", "--tags", url], cwd=raiz, capture_output=True, text=True,
+                           timeout=TEMPO_DO_AVISO, env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
+        ultima = maior_versao(r.stdout) if r.returncode == 0 else None
+        if ultima is None or versao_tupla(ultima) <= versao_tupla(local):
+            return ""
+    except (OSError, ValueError, subprocess.TimeoutExpired):
+        return ""
+    return (f"Aviso do linkedin-kit: saiu a versão v{ultima} do kit, e esta cópia está na v{local}. "
+            "Na sua primeira resposta, conte isso à pessoa em uma frase e diga que ela pode digitar "
+            "/atualizar quando quiser. Não atualize sem ela pedir.")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Atualiza o motor do kit.")
-    parser.add_argument("acao", choices=["verificar", "aplicar"])
+    parser.add_argument("acao", choices=["verificar", "aplicar", "avisar"])
     parser.add_argument("--ignorar-edicoes", action="store_true",
                         help="troca o motor mesmo com edições locais já commitadas")
     args = parser.parse_args(argv)
+    if args.acao == "avisar":
+        aviso = avisar(RAIZ)
+        if aviso:
+            print(aviso)
+        return 0
     try:
         if args.acao == "verificar":
             estado, mensagem = verificar(RAIZ)

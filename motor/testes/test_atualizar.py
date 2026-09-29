@@ -1,3 +1,4 @@
+import json
 import os
 import shutil
 import subprocess
@@ -170,6 +171,74 @@ class TestAtualizar(unittest.TestCase):
         arquivos_do_commit = git(self.copia, "show", "--name-only", "--format=", "HEAD")
         self.assertNotIn("eu/VOZ.md", arquivos_do_commit)
         self.assertEqual(self.ler("eu/VOZ.md"), "rascunho dela\n")
+
+    def test_aplica_traz_o_settings_do_claude(self):
+        escreve(self.kit, ".claude/settings.json", "{}\n")
+        self.publicar_v110()
+        codigo, saida = self.rodar("aplicar")
+        self.assertEqual(codigo, 0, saida)
+        self.assertEqual(self.ler(".claude/settings.json"), "{}\n")
+
+    def atualizada_por_script_antigo(self):
+        """Deixa a cópia como o script de uma versão anterior deixaria: na v1.1.0,
+        mas sem o .claude/settings.json, um caminho do motor que ele não conhecia."""
+        escreve(self.kit, ".claude/settings.json", "{}\n")
+        self.publicar_v110()
+        self.rodar("aplicar")
+        git(self.copia, "rm", "-q", ".claude/settings.json")
+        git(self.copia, "commit", "-q", "-m", "motor: atualiza de v1.0.0 para v1.1.0")
+
+    def test_completa_arquivo_que_um_script_antigo_nao_trouxe(self):
+        self.atualizada_por_script_antigo()
+        codigo, saida = self.rodar("verificar")
+        self.assertEqual(codigo, 0, saida)
+        self.assertTrue(saida.startswith("ESTADO: atualizado"), saida)
+        self.assertIn(".claude/settings.json", saida)
+        self.assertEqual(self.ler(".claude/settings.json"), "{}\n")
+        self.assertEqual(git(self.copia, "log", "-1", "--format=%s").strip(), "motor: completa a v1.1.0")
+        self.assertEqual(git(self.copia, "status", "--porcelain"), "")
+
+    def test_arquivo_que_faltava_nao_vira_edicao_na_versao_seguinte(self):
+        self.atualizada_por_script_antigo()
+        escreve(self.kit, "motor/regras/a.md", "regra a v3\n")
+        escreve(self.kit, "motor/VERSAO", "1.2.0\n")
+        escreve(self.kit, "motor/NOVIDADES.md", "# Novidades\n\n## v1.2.0\n\n- Regra A de novo.\n\n" + NOVIDADES_V11[len("# Novidades\n\n"):])
+        git(self.kit, "commit", "-q", "-am", "v1.2")
+        git(self.kit, "tag", "v1.2.0")
+        codigo, saida = self.rodar("aplicar")
+        self.assertEqual(codigo, 0, saida)
+        self.assertTrue(saida.startswith("ESTADO: aplicado"), saida)
+        self.assertEqual(self.ler("motor/regras/a.md"), "regra a v3\n")
+
+    def test_avisar_fica_calado_na_versao_mais_nova(self):
+        codigo, saida = self.rodar("avisar")
+        self.assertEqual((codigo, saida), (0, ""))
+
+    def test_avisar_conta_da_versao_nova_sem_mexer_na_pasta(self):
+        self.publicar_v110()
+        codigo, saida = self.rodar("avisar")
+        self.assertEqual(codigo, 0, saida)
+        self.assertIn("v1.1.0", saida)
+        self.assertIn("v1.0.0", saida)
+        self.assertIn("/atualizar", saida)
+        self.assertEqual(git(self.copia, "remote"), "")
+        self.assertEqual(git(self.copia, "tag"), "")
+        self.assertEqual(self.ler("motor/regras/a.md"), "regra a v1\n")
+
+    def test_avisar_fica_calado_sem_conexao(self):
+        escreve(self.copia, "motor/ORIGEM", f"{self.kit.parent / 'nao-existe'}\n")
+        codigo, saida = self.rodar("avisar")
+        self.assertEqual((codigo, saida), (0, ""))
+
+
+class TestHookDoKit(unittest.TestCase):
+    def test_inicio_de_sessao_roda_o_aviso(self):
+        settings = json.loads((MOTOR.parent / ".claude" / "settings.json").read_text(encoding="utf-8"))
+        [grupo] = settings["hooks"]["SessionStart"]
+        [hook] = grupo["hooks"]
+        self.assertEqual(grupo["matcher"], "startup")
+        self.assertIn("motor/atualizar.py\" avisar", hook["command"])
+        self.assertLessEqual(hook["timeout"], 15)
 
 
 if __name__ == "__main__":
