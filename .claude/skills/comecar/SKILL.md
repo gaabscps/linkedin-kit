@@ -42,14 +42,18 @@ digita as respostas não muda nada.
      link da mensagem, e siga.
    - **Saída 0:** siga.
 
-3. **Identidade do git.** Se `git config user.name` estiver vazio, pergunte o
-   nome dela e configure só neste repositório:
+3. **Identidade do git.** Se `git config --local user.name` estiver vazio
+   (repare no `--local`: o que importa é a identidade deste repositório, e não
+   a do computador, que pode ser de outra pessoa ou ter o email pessoal dela),
+   pergunte o nome dela e configure só neste repositório:
    ```bash
-   git config user.name "o nome que ela disser"
-   git config user.email "eu@linkedin-kit.local"
+   git config --local user.name "o nome que ela disser"
+   git config --local user.email "eu@linkedin-kit.local"
    ```
    Explique: o git assina cada versão salva com um nome e um email, e o email
-   genérico evita que o email pessoal dela fique gravado no histórico.
+   genérico evita que um email pessoal fique gravado no histórico. Isso vale
+   também quando alguém conduz a entrevista no próprio computador: sem este
+   passo, as versões dela sairiam assinadas por quem conduz.
 
 4. **Situar a pessoa** em até três linhas: o que vai acontecer, que leva de 1 a
    2 horas no total, que dá para parar quando quiser. Mostre a tabela do
