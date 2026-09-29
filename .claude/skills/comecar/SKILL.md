@@ -1,6 +1,6 @@
 ---
 name: comecar
-description: Use quando a pessoa digitar /comecar, disser que quer começar, montar o perfil, fazer a entrevista, ou quando eu/PROGRESSO.md não existir. Entrevista a pessoa em partes (objetivo, fatos, voz, perfil, primeiro post) e preenche a pasta eu/. Também refaz uma parte só, com /comecar fatos, /comecar voz, /comecar perfil, /comecar objetivo ou /comecar post.
+description: Use quando a pessoa digitar /comecar, disser que quer começar, montar o perfil, fazer a entrevista, ou quando eu/PROGRESSO.md não existir. Entrevista a pessoa em partes (objetivo, fatos, voz, perfil, primeiro post e, opcional, vagas) e preenche a pasta eu/. Também refaz uma parte só, com /comecar fatos, /comecar voz, /comecar perfil, /comecar objetivo, /comecar post ou /comecar vagas.
 ---
 
 # Começar: a entrevista
@@ -14,13 +14,13 @@ digita as respostas não muda nada.
 
 ## Argumento
 
-- **Sem argumento:** retoma a primeira parte que não está `feita` no
-  `eu/PROGRESSO.md`.
+- **Sem argumento:** retoma a primeira parte, de 0 a 4, que não está `feita`
+  no `eu/PROGRESSO.md`. A Parte 5 é opcional: só começa com `/comecar vagas`
+  ou quando ela aceita, no fim da Parte 4.
 - **`objetivo`, `fatos`, `voz`, `perfil` ou `post`:** refaz só aquela parte.
   É assim que a pessoa atualiza tudo depois de um emprego novo ou um curso
   novo.
-- **`vagas`:** responda que essa parte ainda não existe no kit e que vai chegar
-  por uma atualização.
+- **`vagas`:** faz ou refaz a Parte 5, que prepara o `/aplicar-vagas`.
 
 ## Preparação (toda vez, antes de qualquer pergunta)
 
@@ -250,3 +250,98 @@ e mostre os comandos:
 | `/montar-cv` | Quando for se candidatar a uma vaga. |
 | `/comecar fatos` | Quando mudar de emprego ou fizer um curso. |
 | `/atualizar` | Quando eu avisar, ao abrir uma conversa, que saiu versão nova do kit. |
+
+Se o objetivo dela (Parte 0) inclui procurar emprego, ofereça a Parte 5: eu me
+candidato sozinho, por ela, às vagas que passam na régua dela. Se ela aceitar,
+siga para a Parte 5; se não, diga que ela pode começar quando quiser com
+`/comecar vagas`.
+
+## Parte 5: Vagas (opcional)
+
+Prepara o `/aplicar-vagas`: a régua que decide a que vagas ela se candidata, as
+buscas e as respostas de formulário. Leia `motor/regras/vagas.md` antes.
+
+**Antes de começar:** a Parte 1 precisa estar `feita`, porque a régua e as
+respostas saem do `eu/cv/FATOS.yml`. Se não estiver, diga isso e comece pela
+Parte 1. Se a linha de vagas do `eu/PROGRESSO.md` for diferente da linha
+`5. Vagas (opcional)` do modelo `motor/modelos/PROGRESSO.md` (as cópias antigas
+dizem "ainda não disponível"), troque pela linha do modelo.
+
+Grave cada resposta no arquivo de `eu/vagas/` assim que ela responder, e não
+no fim: é o que permite retomar a parte sem repetir pergunta.
+
+1. **Combinar.** Em até cinco linhas: eu busco vagas de candidatura
+   simplificada no LinkedIn, leio cada uma e me candidato sozinho ao que passar
+   na régua dela, até as buscas acabarem; ela dá a partida com `/aplicar-vagas`
+   e pode mandar parar; a primeira passada para em 5, para ela conferir; e o
+   risco: o LinkedIn pode restringir conta que ele entende como automação, e o
+   que pesa é o volume. Pergunte se ela quer seguir. Se não quiser, pare aqui,
+   sem marcar nada.
+2. **Criar `eu/vagas/`.** Copie os arquivos de `motor/modelos/vagas/`, sem
+   sobrescrever um arquivo que já existe.
+3. **O navegador.** A rotina usa o Chrome dela, pela extensão Claude in
+   Chrome, com o LinkedIn logado. Liste os navegadores conectados. Se não
+   houver nenhum, guie a instalação pelo `README.md`, na seção "O que você
+   precisa", e espere. Avise que, quando o app ou a extensão pedirem permissão
+   para agir no LinkedIn, ela precisa permitir sempre: sem isso, a rotina para
+   a cada clique. O mesmo vale para o comando `python3 motor/vagas.py`, que
+   registra cada vaga, e para a pergunta do app sobre confiar nesta pasta.
+4. **O que entra.** Proponha os cargos e o nível a partir do `eu/cv/FATOS.yml`
+   e do objetivo dela, e confirme. Grave em "O que entra" de
+   `eu/vagas/CRITERIOS.md`.
+5. **O que corta**, uma pergunta por vez, gravando em "Corta na hora" com o
+   porquê:
+   - área ou tarefa que ela não faz, ou não quer mais fazer;
+   - ferramenta ou técnica que, sendo o centro da vaga, ela não domina;
+   - nível: o que é baixo ou alto demais para ela;
+   - vaga afirmativa: pergunte, sem pressupor nada, se ela se encaixa em algum
+     grupo de vaga afirmativa em que queira se candidatar. Se ela preferir não
+     dizer, vaga afirmativa corta;
+   - idiomas: o que ela aceita que a vaga exija;
+   - vaga que exige morar ou ter permissão de trabalho em outro país.
+6. **Lugar e modalidade:** remoto, híbrido ou presencial, e em que cidades ou
+   raio. Grave em "Lugar e modalidade".
+7. **Salário.** O piso, que só corta quando a vaga publica faixa, vai para o
+   `eu/vagas/CRITERIOS.md`. O valor base para campo de pretensão e o regime
+   (CLT, PJ ou os dois) vão para "Pretensão salarial" do
+   `eu/vagas/RESPOSTAS.md`. Explique a regra do modelo para vaga com faixa
+   publicada (a pretensão é a média da faixa) e pergunte se ela concorda; se
+   ela preferir outra, grave a dela.
+8. **As buscas.** Proponha de 3 a 6 buscas booleanas, com as palavras que
+   recrutador da área dela usa no título da vaga (e em inglês, se o público
+   dela é em inglês), da mais estreita para a mais larga. Meça cada uma no
+   Chrome dela: abra o feed, depois a URL de `eu/vagas/BUSCAS.md`, e veja
+   quantos resultados vêm e se os títulos batem. Para presencial ou híbrido,
+   confira se os resultados respeitam a cidade. Ajuste o que vier ruim, e
+   grave cada busca na tabela, com a URL inteira que foi medida e a
+   medição.
+9. **As respostas de formulário**, seção por seção do
+   `eu/vagas/RESPOSTAS.md`, uma pergunta por vez, pulando o que não se aplica
+   a ela:
+   - "Fale um pouco sobre você": proponha a partir do `resumo.base` do
+     `eu/cv/FATOS.yml`, e anote o número de caracteres (`wc -m`). Uma versão
+     por idioma do público dela;
+   - formação: a instituição com o nome igual ao do perfil do LinkedIn. Peça
+     que ela confira se o perfil tem a instituição preenchida em cada
+     formação: o formulário puxa de lá, e o campo vazio trava candidaturas;
+   - anos de experiência nas competências principais: calcule pelas datas do
+     `eu/cv/FATOS.yml` e confirme cada número com ela antes de gravar;
+   - diversidade e consentimentos: são decisões dela; explique cada uma em
+     uma linha e grave o que ela decidir;
+   - data de nascimento: só se ela quiser que a rotina preencha, e nesse caso
+     no campo `nascimento` do `eu/cv/contato.yml`, que fica fora do git.
+10. **Os currículos.** A rotina anexa o PDF da variante base de cada idioma.
+    Rode `python3 motor/cv/gerar.py --checar` e resolva o que faltar como no
+    passo 1 da skill `montar-cv`. Depois gere `python3 motor/cv/gerar.py
+    base-pt` (e `base-en`, se o público dela é em inglês), e grave o caminho de
+    cada PDF em "Qual CV anexar".
+11. **Fechar.** Mostre a régua e as buscas, peça o ok dela, marque a Parte 5
+    como `feita` e commite:
+    ```bash
+    git status --short eu
+    git add eu
+    git commit -m "eu: parte 5, vagas" -- eu
+    ```
+    Diga que a primeira passada começa quando ela digitar `/aplicar-vagas`, que
+    ela para em 5 candidaturas, e que depois vale ler o relatório do dia em
+    `eu/vagas/log/` para ajustar a régua.

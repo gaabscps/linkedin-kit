@@ -50,7 +50,8 @@ Traz as melhorias do kit para esta cópia. Só o motor muda (`CLAUDE.md`,
 5. **Campos novos nos modelos.** O `/atualizar` nunca mexe em `eu/`, então uma
    seção ou um campo que um modelo ganhou não chega sozinho nos arquivos dela.
    Compare cada arquivo de `motor/modelos/` com o arquivo de mesmo nome em
-   `eu/` (ou `eu/cv/`). Se o modelo tem uma seção ou um campo que o arquivo
+   `eu/` (ou `eu/cv/`), e cada arquivo de `motor/modelos/vagas/` com o de
+   `eu/vagas/`, quando essa pasta existe. Se o modelo tem uma seção ou um campo que o arquivo
    dela não tem, diga o que é, em uma linha, e ofereça acrescentar, vazio, sem
    tocar em nada do que ela já escreveu. Commite com o ok dela:
    ```bash

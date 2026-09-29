@@ -17,6 +17,11 @@ local:
 # no FATOS.yml, em certificacoes; o número fica só aqui.
 registro:
 
+# Data de nascimento (AAAA-MM-DD), só se a pessoa quiser que o /aplicar-vagas
+# preencha os formulários que pedem. Mora aqui porque este arquivo fica fora do
+# git. Vazio, a vaga que pedir a data é pulada.
+nascimento:
+
 # Cada link é um item com duas chaves: texto (o que aparece escrito no PDF,
 # por exemplo o endereço sem o https) e url (o endereço completo).
 links: []

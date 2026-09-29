@@ -12,4 +12,4 @@ voltar outro dia: o `/comecar` lê esta tabela e retoma de onde parou.
 | 2. Voz | pendente | |
 | 3. Perfil | pendente | |
 | 4. Primeiro post | pendente | |
-| Vagas (busca e candidatura) | ainda não disponível; o CV por vaga já funciona com `/montar-cv` | |
+| 5. Vagas (opcional) | pendente | |

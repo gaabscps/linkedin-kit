@@ -5,6 +5,16 @@ O que mudou em cada versão do motor, da mais nova para a mais antiga. O
 escrita em português simples, dizendo o que muda para a pessoa, e não o que
 mudou no código.
 
+## v1.3.0
+
+- **O Claude pode se candidatar a vagas por você.** Digite `/comecar vagas`
+  uma vez: ele monta com você a régua (o que entra e o que corta), as buscas e
+  as respostas dos formulários. Depois, cada `/aplicar-vagas` busca vagas de
+  candidatura simplificada no LinkedIn, lê cada uma e se candidata sozinho ao
+  que passa na régua. A primeira vez para em 5, para você conferir.
+- Precisa do Google Chrome com a extensão Claude in Chrome e o LinkedIn
+  logado. O `/comecar vagas` explica o que falta.
+
 ## v1.2.0
 
 - O Claude agora avisa sozinho, ao abrir uma conversa, quando sai versão nova

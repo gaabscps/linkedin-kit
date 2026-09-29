@@ -13,7 +13,8 @@ Ler, nesta ordem:
 
 1. `motor/regras/verdade.md`, sempre.
 2. A regra do tipo de tarefa: `motor/regras/linkedin.md` e
-   `motor/regras/escrita.md` para post e perfil; `motor/regras/cv.md` para CV.
+   `motor/regras/escrita.md` para post e perfil; `motor/regras/cv.md` para CV;
+   `motor/regras/vagas.md` para se candidatar a vagas.
 3. `eu/EXCECOES.md`, que **vence qualquer regra de `motor/regras/`**. Se uma
    exceção dali contradiz uma regra do motor, vale a exceção.
 4. `eu/VOZ.md`.
@@ -82,7 +83,8 @@ Pergunte só quando as duas leituras possíveis levariam a ações diferentes.
 
 ## Git
 
-Commite ao fim de cada parte da entrevista, de cada post e de cada CV, sempre
+Commite ao fim de cada parte da entrevista, de cada post, de cada CV e de cada
+passada de vagas, sempre
 com os caminhos explícitos. Antes de todo `git add eu`, rode
 `git status --short eu` e confira que só entram arquivos esperados: um CV
 antigo, um print ou um export de dados salvo em `eu/` não pode entrar.

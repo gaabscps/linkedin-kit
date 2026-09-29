@@ -1,4 +1,10 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(python3 motor/vagas.py:*)",
+      "Edit(eu/vagas/**)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {

@@ -240,6 +240,10 @@ class TestHookDoKit(unittest.TestCase):
         self.assertIn("motor/atualizar.py\" avisar", hook["command"])
         self.assertLessEqual(hook["timeout"], 15)
 
+    def test_script_da_rotina_de_vagas_nao_pede_licenca(self):
+        settings = json.loads((MOTOR.parent / ".claude" / "settings.json").read_text(encoding="utf-8"))
+        self.assertEqual(settings["permissions"]["allow"], ["Bash(python3 motor/vagas.py:*)", "Edit(eu/vagas/**)"])
+
 
 if __name__ == "__main__":
     unittest.main()

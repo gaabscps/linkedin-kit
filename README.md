@@ -24,6 +24,10 @@ com as suas palavras.
   O `/montar-cv` confere e explica como instalar o que faltar.
 - **Opcional: uma conta no GitHub**, se você quiser uma cópia de segurança do
   seu trabalho fora do computador. Dá para começar sem e decidir depois.
+- **Para o `/aplicar-vagas` (opcional):** o Google Chrome com a extensão
+  **Claude in Chrome**, instalada pela Chrome Web Store e conectada à sua
+  conta do Claude, e o LinkedIn logado nesse Chrome. O `/comecar vagas` confere
+  e guia o que faltar.
 
 ---
 
@@ -61,6 +65,7 @@ autorize.
 | `/escrever-post` | Quando quiser postar. |
 | `/registrar-aprendizado` | Depois de publicar: você cola o que foi ao ar e o kit aprende com o que você mudou. |
 | `/montar-cv` | Quando for se candidatar: você cola a vaga e sai o PDF. |
+| `/aplicar-vagas` | Quando quiser que o Claude se candidate por você, sozinho, às vagas que passam na sua régua. Antes, uma vez: `/comecar vagas`. |
 | `/atualizar` | Quando o Claude avisar, ao abrir uma conversa, que saiu versão nova do kit. |
 
 ---
@@ -89,6 +94,11 @@ autorize.
   nele. No fim da entrevista, o Claude explica como guardar uma cópia privada
   no GitHub, se você quiser.
 - Nenhum documento (CPF, RG, dado bancário, senha) é pedido, em nenhum momento.
+- **O `/aplicar-vagas` envia candidaturas em seu nome**, sozinho, e só quando
+  você pede. Ele só se candidata: nunca manda mensagem, não segue ninguém, e a
+  primeira passada para em 5 para você conferir. Mesmo assim, o LinkedIn pode
+  restringir conta que ele entende como automação, e a decisão de correr esse
+  risco é sua.
 
 ---
 
