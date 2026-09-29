@@ -1,0 +1,25 @@
+# Contato que aparece no topo do CV.
+#
+# Este arquivo mora em eu/cv/contato.yml e fica FORA do git (está no
+# .gitignore). Telefone e email não entram no histórico, porque o que entra no
+# histórico do git fica lá para sempre, mesmo depois de apagado do arquivo.
+# Nenhum outro arquivo do kit repete estes valores.
+
+email: marina.teixeira@example.com
+telefone: (11) 90000-1234
+
+# Cidade e estado. Pode ser texto simples ou ter as duas línguas, com as chaves
+# pt e en.
+local: São Paulo, SP
+
+# Registro profissional com número (COREN, OAB, CRM, CREA), quando a pessoa
+# quer que ele apareça no cabeçalho do CV. O conselho e a situação vão também
+# no FATOS.yml, em certificacoes; o número fica só aqui.
+# Vazio por escolha dela: não quer o número do COREN no CV (2026-09-29).
+registro:
+
+# Cada link é um item com duas chaves: texto (o que aparece escrito no PDF,
+# por exemplo o endereço sem o https) e url (o endereço completo).
+links:
+  - texto: linkedin.com/in/marina-exemplo
+    url: https://www.linkedin.com/in/marina-exemplo

@@ -1,0 +1,42 @@
+# Variante do CV para a vaga de Analista de Qualidade e Segurança do Paciente
+# do Hospital Horizonte (São Paulo, SP), criada em 2026-09-29 a partir de
+# base-pt.yml. Este arquivo NÃO contém conteúdo, só seleção, com exceção do
+# resumo desta vaga. Todo o resto mora em eu/cv/FATOS.yml.
+
+# pt ou en
+idioma: pt
+
+# Nome do PDF, sem a extensão. Único para cada variante.
+arquivo: Marina-Lopes-Teixeira-CV-Hospital-Horizonte
+
+# Resumo desta vaga, pelos três movimentos de motor/regras/cv.md.
+resumo: >-
+  Enfermeira desde 2015, à frente da UTI Adulto do Hospital Santa Aurora desde
+  2019. Coordeno 9 enfermeiros e 32 técnicos de enfermagem numa UTI de 20
+  leitos e integro desde 2023 o Comitê de Segurança do Paciente, que analisa
+  todo mês as notificações de evento adverso. Em 2021 criei o checklist da
+  primeira hora para sepse, treinei nele a enfermagem e os médicos plantonistas
+  dos 4 turnos e reduzi de 3 horas para 50 minutos o tempo do diagnóstico ao
+  antibiótico, segundo a auditoria interna de 2022.
+
+# Para trocar só a linha de disponibilidade do cabeçalho nesta vaga, descomente
+# e escreva aqui.
+# disponibilidade:
+
+# Um item por experiência: o id da experiência e a lista de ids dos bullets,
+# na ordem em que devem aparecer no PDF.
+experiencias:
+  santa-aurora: [sa-sepse, sa-sepse-adesao, sa-comite, sa-equipe]
+  bela-vista: [bv-passagem, bv-preceptoria]
+
+# Ids dos projetos, na ordem. Vazio quando a pessoa não tem projetos.
+projetos: []
+
+# Ids dos grupos de competências, na ordem.
+skills: [gestao-qualidade, ferramentas, assistencia]
+
+# Ids das certificações, na ordem. Vazio quando não há.
+certificacoes: [coren, acls, bls]
+
+# Ids das formações, na ordem.
+formacao: [pos-terapia-intensiva, enfermagem]

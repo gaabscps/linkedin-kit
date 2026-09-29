@@ -14,6 +14,14 @@ Regras em motor/regras/escrita.md, "Mensagem direta para uma pessoa" e
 **Canal:**
 <!-- mensagem no LinkedIn, convite com nota, email, ou campo de formulário -->
 
+**Vaga:**
+
+**Variante do CV:**
+<!-- o arquivo da variante em eu/cv/variantes/ que vai junto -->
+
+**Status:**
+<!-- rascunho, aprovado, ou enviado em data -->
+
 ## Texto
 
 ## Nota do convite
@@ -27,5 +35,9 @@ Regras em motor/regras/escrita.md, "Mensagem direta para uma pessoa" e
 ## Conferência
 
 <!-- Tamanho, nome na primeira palavra, proibidos, travessão, origem de cada fato e sigilo. -->
+
+## Correções feitas
+
+<!-- Acentos, concordância e digitação corrigidos, para ela conferir e reverter. -->
 
 ## Decisões

@@ -1,0 +1,239 @@
+# Banco de fatos do CV
+#
+# Fonte única de verdade do currículo. Nada de conteúdo mora no template nem nas
+# variantes: aqui ficam os fatos, lá fica só a seleção e a apresentação.
+#
+# Regras que valem para este arquivo (detalhes em motor/regras/cv.md):
+#
+# 1. O texto NASCE em português e o inglês é a tradução dele. Se um bullet
+#    mudar, mudar o `pt` primeiro e refazer o `en` a partir dele.
+# 2. Todo bullet carrega escala, posse, resultado ou dificuldade. Se não
+#    carrega nenhuma das quatro, é descrição de cargo e não entra.
+# 3. Número que não dá para confirmar entra com `verificar: true` e não vai
+#    para nenhum texto publicado até ser confirmado.
+# 4. Proibido travessão em qualquer texto.
+# 5. As `tags` NÃO escolhem nada sozinhas. Elas existem para achar candidatos
+#    rápido ao montar uma variante. Quem escolhe os bullets é gente.
+# 6. O bullet começa pelo VERBO, sem sujeito, e não pendura explicação de
+#    contexto que o cabeçalho da experiência já dá.
+#
+# Telefone, email, cidade e links NÃO moram aqui: moram em eu/cv/contato.yml,
+# que fica fora do git.
+#
+# Nesta cópia só existe o `pt`: o público dela é em português e ela não quer
+# CV nem perfil em inglês (eu/VOZ.md, Idioma). O `en` se escreve a partir do
+# `pt` no dia em que uma vaga pedir.
+
+identidade:
+  # Nome como aparece no LinkedIn.
+  nome: Marina Lopes Teixeira
+  # Título profissional, sem nível que a pessoa não teve.
+  titulo:
+    pt: Enfermeira Coordenadora de UTI Adulto
+  # Onde e como a pessoa pode trabalhar (presencial, híbrido, remoto).
+  disponibilidade:
+    pt: Presencial ou híbrido, em São Paulo e Grande São Paulo
+
+# ---------------------------------------------------------------------------
+# RESUMO
+#
+# O único texto reescrito por vaga. O `base` é o padrão, usado quando a
+# variante diz `resumo: base`.
+#
+# Três movimentos, nesta ordem, e nada além deles:
+#
+#   1. Quem a pessoa é e desde quando. Uma frase, com o ano de início.
+#   2. A posse principal, com o que a vaga pede citado dentro dela.
+#   3. A peça que mais conversa com ESTA vaga, com o número que a sustenta.
+#
+# Limites: máximo de 90 palavras; nenhum fato que não exista como bullet neste
+# arquivo; nada de palavra-chave solta pendurada no fim; nenhum adjetivo de
+# autoelogio (apaixonada, sólido, robusto, resiliente).
+# ---------------------------------------------------------------------------
+
+resumo:
+  base:
+    pt: >-
+      Enfermeira desde 2015, à frente da UTI Adulto do Hospital Santa Aurora
+      desde 2019. Coordeno 9 enfermeiros e 32 técnicos de enfermagem numa UTI
+      de 20 leitos e integro desde 2023 o Comitê de Segurança do Paciente do
+      hospital, que analisa todo mês as notificações de evento adverso. Em 2021
+      criei o checklist da primeira hora para sepse e reduzi de 3 horas para 50
+      minutos o tempo entre o diagnóstico e o início do antibiótico, segundo a
+      auditoria interna de 2022.
+
+# ---------------------------------------------------------------------------
+# EXPERIÊNCIAS, da mais recente para a mais antiga.
+#
+# Cada experiência é um item com:
+#   id            identificador curto, sem espaço (usado nas variantes)
+#   empresa       nome da empresa ou instituição
+#   empresa_nota  opcional, um complemento curto entre parênteses
+#   cargo         com pt e en
+#   inicio        AAAA-MM
+#   fim           AAAA-MM, ou a palavra atual para o emprego de agora
+#   contexto      com pt e en: o que a empresa faz e o porte dela, numa frase
+#   bullets       lista de itens, cada um com:
+#                   id         identificador curto, sem espaço
+#                   tags       lista de palavras para achar o bullet depois
+#                   lente      escala, posse, resultado ou dificuldade
+#                   pt         o texto em português
+#                   en         a tradução
+#                   verificar  true quando há número ainda não confirmado
+# ---------------------------------------------------------------------------
+
+experiencias:
+  - id: santa-aurora
+    empresa: Hospital Santa Aurora
+    cargo:
+      pt: Enfermeira Coordenadora da UTI Adulto
+    inicio: 2019-06
+    fim: atual
+    contexto:
+      pt: Hospital geral privado.
+    bullets:
+      - id: sa-equipe
+        tags: [gestao, equipe, escala-de-trabalho, uti]
+        lente: escala
+        pt: >-
+          Coordeno 9 enfermeiros e 32 técnicos de enfermagem nos 4 turnos, numa
+          UTI de 20 leitos, e monto a escala de trabalho de toda a equipe.
+      - id: sa-sepse
+        tags: [sepse, protocolo, indicador, qualidade, seguranca-do-paciente]
+        lente: resultado
+        pt: >-
+          Reduzi de 3 horas para 50 minutos o tempo entre o diagnóstico de
+          sepse e o início do antibiótico, com um checklist da primeira hora
+          que criei em 2021 e que tem uma enfermeira responsável em cada turno
+          (auditoria interna de 2022).
+      - id: sa-sepse-adesao
+        tags: [sepse, protocolo, treinamento, multiprofissional, indicador, gestao-de-mudanca]
+        lente: dificuldade
+        pt: >-
+          Resolvi a resistência inicial dos médicos plantonistas, que viam o
+          checklist como papel a mais, com um treinamento curto nos 4 turnos
+          para a enfermagem e os próprios plantonistas, e um quadro na UTI com
+          o tempo mês a mês. O checklist segue em uso até hoje.
+      - id: sa-comite
+        tags: [seguranca-do-paciente, evento-adverso, comite, qualidade]
+        lente: escala
+        pt: >-
+          Integro desde 2023 o Comitê de Segurança do Paciente, que analisa
+          todo mês as notificações de evento adverso do hospital inteiro.
+      - id: sa-treinamentos
+        tags: [treinamento, educacao, equipe]
+        lente: posse
+        pt: >-
+          Organizo os treinamentos da equipe de enfermagem da UTI.
+
+  - id: bela-vista
+    empresa: Hospital Municipal Bela Vista
+    empresa_nota:
+      pt: pronto-socorro e UTI
+    cargo:
+      pt: Enfermeira Assistencial
+    inicio: 2015-03
+    fim: 2019-05
+    contexto:
+      pt: Hospital geral público municipal.
+    bullets:
+      - id: bv-passagem
+        tags: [padronizacao, passagem-de-plantao, seguranca-do-paciente, excel, qualidade]
+        lente: resultado
+        pt: >-
+          Criei uma planilha no Excel para a passagem de plantão da UTI, antes
+          só verbal, com os itens de cada leito. Depois de um teste de um mês
+          no plantão noturno, a coordenação a adotou como padrão da UTI em
+          2018.
+      - id: bv-preceptoria
+        tags: [preceptoria, educacao, treinamento]
+        lente: posse
+        pt: >-
+          Atuei como preceptora de estágio de enfermagem e ensinei os
+          estagiários a passar o plantão pela planilha.
+
+# ---------------------------------------------------------------------------
+# PROJETOS (opcional): o que a pessoa construiu ou conduziu por conta própria,
+# fora do cargo. Cada item com id, nome, ferramentas (lista), pt e en. A
+# descrição de projeto é prosa curta e pode ser em primeira pessoa.
+# ---------------------------------------------------------------------------
+
+projetos: []
+
+# ---------------------------------------------------------------------------
+# COMPETÊNCIAS, agrupadas, nas palavras da área da pessoa. Cada grupo com id,
+# titulo (pt e en) e itens (lista).
+# ---------------------------------------------------------------------------
+
+skills:
+  - id: gestao-qualidade
+    titulo:
+      pt: Gestão e qualidade
+    itens:
+      - Coordenação de equipe de enfermagem e escala de trabalho
+      - Protocolo de sepse
+      - Acompanhamento de indicador assistencial
+      - Padronização de rotinas
+      - Análise de notificações de evento adverso
+      - Treinamento de equipe e preceptoria de estágio
+  - id: assistencia
+    titulo:
+      pt: Assistência
+    itens:
+      - Terapia intensiva adulto
+      - Urgência e emergência
+  - id: ferramentas
+    titulo:
+      pt: Ferramentas
+    itens:
+      - Excel (tabela dinâmica)
+
+# ---------------------------------------------------------------------------
+# CERTIFICAÇÕES (opcional): cursos com certificado, registro profissional e
+# habilitações. Cada item com id, nome (texto, ou pt e en), instituicao, ano e,
+# quando o certificado vence, validade (AAAA-MM, o mês em que vence; o gerador
+# avisa quando uma certificação vencida entra num CV).
+# ---------------------------------------------------------------------------
+
+certificacoes:
+  - id: coren
+    nome: COREN-SP
+    situacao:
+      pt: ativo
+  - id: acls
+    nome: ACLS
+    ano: 2024
+    validade: 2026-11
+  - id: bls
+    nome: BLS
+    ano: 2024
+    validade: 2026-11
+
+# ---------------------------------------------------------------------------
+# IDIOMAS: cada item com lingua (pt e en) e nivel (pt e en).
+# ---------------------------------------------------------------------------
+
+idiomas:
+  - lingua:
+      pt: Inglês
+    nivel:
+      pt: Leitura técnica
+
+# ---------------------------------------------------------------------------
+# FORMAÇÃO: cada item com id, curso (pt e en), instituicao, inicio e fim (ano,
+# ou a palavra atual para quem ainda está cursando).
+# ---------------------------------------------------------------------------
+
+formacao:
+  - id: pos-terapia-intensiva
+    curso:
+      pt: Pós-graduação em Terapia Intensiva
+    instituicao: Centro Universitário Vale Azul
+    inicio: 2016
+    fim: 2017
+  - id: enfermagem
+    curso:
+      pt: Enfermagem
+    instituicao: Centro Universitário Vale Azul
+    inicio: 2010
+    fim: 2014
