@@ -103,8 +103,9 @@ produziria um CV que bate no checklist da vaga e não conta história nenhuma.
 - **Duração ao lado do período** ("2a 3m"), porque boa permanência não se
   percebe lendo datas cruas.
 - **Certificações antes da formação**, quando existem: curso com certificado,
-  registro profissional, habilitação. Certificado que vence leva o ano da
-  validade, porque vencido ele conta contra.
+  registro profissional, habilitação. Certificado que vence leva o mês e o
+  ano da validade, porque vencido ele conta contra, e o gerador avisa quando
+  um vencido entra no CV.
 - **Formação no fim.**
 
 ---
