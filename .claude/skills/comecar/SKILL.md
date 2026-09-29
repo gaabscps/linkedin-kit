@@ -168,7 +168,11 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
 1. Peça **dois ou três textos que ela escreveu sozinha**, para colegas ou
    amigos: uma mensagem, um email, um post antigo. Explique por quê: texto
    revisado por outra pessoa, ou escrito em tom de documento oficial, não
-   mostra como ela escreve.
+   mostra como ela escreve. Antes de ela colar, avise que nome e detalhe de
+   terceiros (paciente, cliente, aluno, colega) e telefone ou email de outras
+   pessoas saem do texto. Se algo assim vier mesmo assim, guarde o texto com o
+   trecho trocado por uma descrição em palavras, como "o paciente do leito",
+   sem colchete.
 2. Analise nos textos: como cumprimenta, se fala em primeira pessoa e como
    trata o leitor, tamanho e ritmo das frases, pontuação característica,
    expressões que são dela, humor, o que ela evita.
