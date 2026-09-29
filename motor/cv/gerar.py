@@ -254,12 +254,29 @@ def monta_certificacoes(fatos, variante, idioma):
         cert = catalogo[cid]
         detalhes = [str(x) for x in (cert.get("instituicao"), cert.get("ano")) if x]
         if cert.get("validade"):
-            detalhes.append(f'{r["validade"]} {cert["validade"]}')
+            detalhes.append(f'{r["validade"]} {formata_data(cert["validade"], idioma)}')
         linhas.append(f"""<div class="linha-skill">
   <div class="skill-rotulo">{e(loc(cert.get("nome"), idioma))}</div>
   <div class="skill-itens">{e(", ".join(detalhes))}</div>
 </div>""")
     return f'<section class="secao"><h2>{r["certificacoes"]}</h2>{"".join(linhas)}</section>'
+
+
+def vencida(validade, hoje=None):
+    """Diz se a validade já passou. Validade só com o ano vale até dezembro."""
+    hoje = hoje or datetime.date.today()
+    ano, mes = partes_data(validade)
+    return (ano, mes or 12) < (hoje.year, hoje.month)
+
+
+def certificacoes_vencidas(fatos, variante, hoje=None):
+    """Nomes das certificações escolhidas pela variante que já venceram."""
+    catalogo = por_id(fatos.get("certificacoes"))
+    return [
+        loc(catalogo[cid].get("nome"), "pt")
+        for cid in variante.get("certificacoes") or []
+        if catalogo[cid].get("validade") and vencida(catalogo[cid]["validade"], hoje)
+    ]
 
 
 def monta_rodape(fatos, variante, idioma):
@@ -313,6 +330,8 @@ def gerar(caminho_variante, fatos, contato, template, saida, chrome):
     """Escreve o HTML e imprime o PDF de uma variante. Devolve o caminho do PDF."""
     variante = yaml.safe_load(caminho_variante.read_text(encoding="utf-8")) or {}
     nome = variante.get("arquivo") or caminho_variante.stem
+    for certificacao in certificacoes_vencidas(fatos, variante):
+        print(f"Aviso: {certificacao} está vencida e aparece em {caminho_variante.name}.", file=sys.stderr)
     saida.mkdir(parents=True, exist_ok=True)
     arquivo_html = saida / f"{nome}.html"
     arquivo_pdf = saida / f"{nome}.pdf"

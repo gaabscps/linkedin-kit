@@ -87,6 +87,24 @@ class TestDocumento(unittest.TestCase):
         self.assertIn("ACLS", doc)
         self.assertIn("Instituto Teste, 2023, válida até 2025", doc)
 
+    def test_validade_com_mes(self):
+        fatos = {**FATOS, "certificacoes": [{"id": "bls", "nome": "BLS", "ano": 2024, "validade": "2026-11"}]}
+        doc = gerar.monta_documento(fatos, CONTATO, {**VARIANTE, "certificacoes": ["bls"]}, TEMPLATE, "x")
+        self.assertIn("2024, válida até nov/2026", doc)
+
+    def test_avisa_certificacao_vencida(self):
+        hoje = datetime.date(2026, 9, 29)
+        fatos = {**FATOS, "certificacoes": [
+            {"id": "velha", "nome": "Vencida no mês", "validade": "2026-03"},
+            {"id": "ano", "nome": "Vencida no ano", "validade": 2025},
+            {"id": "boa", "nome": "Ainda vale", "validade": "2026-11"},
+            {"id": "ano-atual", "nome": "Vale até dezembro", "validade": 2026},
+            {"id": "sem", "nome": "Não vence"},
+        ]}
+        variante = {**VARIANTE, "certificacoes": ["velha", "ano", "boa", "ano-atual", "sem"]}
+        self.assertEqual(gerar.certificacoes_vencidas(fatos, variante, hoje=hoje),
+                         ["Vencida no mês", "Vencida no ano"])
+
     def test_certificacao_sem_validade(self):
         fatos = {**FATOS, "certificacoes": [{"id": "oab", "nome": "OAB/SP", "ano": 2016}]}
         doc = gerar.monta_documento(fatos, CONTATO, {**VARIANTE, "idioma": "en", "certificacoes": ["oab"]}, TEMPLATE, "x")

@@ -94,7 +94,8 @@ skills: []
 # ---------------------------------------------------------------------------
 # CERTIFICAÇÕES (opcional): cursos com certificado, registro profissional e
 # habilitações. Cada item com id, nome (texto, ou pt e en), instituicao, ano e,
-# quando o certificado vence, validade (o ano em que vence).
+# quando o certificado vence, validade (AAAA-MM, o mês em que vence; o gerador
+# avisa quando uma certificação vencida entra num CV).
 # ---------------------------------------------------------------------------
 
 certificacoes: []
