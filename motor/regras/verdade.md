@@ -15,7 +15,19 @@ em qualquer texto.
 
 Isso vale também para o que "parece óbvio": o nome de um sistema que ela
 provavelmente usou, o tamanho provável de uma equipe, o ano provável de uma
-formação. Provável não é fato.
+formação. Provável não é fato. Três casos em que a inferência passa por fato
+sem ninguém perceber:
+
+- **Data de um feito se pergunta.** O ano em que o problema existia não é o
+  ano em que a solução foi feita, e a data em que ela chegou num setor não diz
+  até quando ela ficou lá.
+- **Leitura que junta fatos não é fato.** "Nos dois hospitais fiz a mesma
+  coisa" ou uma lição tirada da história são leituras. Mostre cada uma
+  separada, como leitura, e só use com o ok dela para aquela frase. O mesmo
+  vale para o tempo verbal: "usa", no presente, afirma que ainda é usado.
+- **Gap também se confirma.** "Nunca participei de uma acreditação" é uma
+  afirmação sobre ela, tão séria quanto dizer que participou. Pergunte antes
+  de declarar.
 
 ---
 

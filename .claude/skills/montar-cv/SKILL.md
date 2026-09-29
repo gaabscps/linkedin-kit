@@ -31,7 +31,9 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
    |---|---|---|
    | cada requisito | tem, tem em parte, ou não tem | o id do bullet ou o trecho da matéria-prima |
 
-   Para cada "não tem", aplique a seção "Declarar ou calar um gap" de
+   Antes de marcar "não tem", confirme com ela a frase exata do gap ("você
+   nunca participou de X?"): o que ela não citou na entrevista não é prova de
+   que não tem. Para cada "não tem" confirmado, aplique a seção "Declarar ou calar um gap" de
    `motor/regras/verdade.md` e diga, em uma linha, se aquele gap será
    declarado ou não, e por quê. O CV não fala de gap; a declaração mora no
    texto do passo 10, e, se ela não quiser texto, numa frase pronta para a
