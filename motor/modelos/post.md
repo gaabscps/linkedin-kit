@@ -45,3 +45,7 @@ O título acima vira "Post NNN: assunto".
 ## Decisões
 
 <!-- Por que esta pauta, este peso, este idioma, e o que foi cortado para caber. -->
+
+## Resultado
+
+<!-- Preenchido pelo /registrar-aprendizado: comentário de alguém relevante, mensagem, convite, e se já foi respondido. -->
