@@ -16,31 +16,32 @@ com as suas palavras.
 - **Assinatura do Claude** num plano pago (o Claude Code, que roda este kit,
   não está no plano gratuito).
 - **O app do Claude no computador**, na aba Code.
-- **Uma conta no GitHub** e o **GitHub Desktop** instalado e conectado a ela,
-  para ter a sua cópia, guardar o seu trabalho fora do computador e receber as
-  atualizações do kit.
 - **Python 3 e git**, que o kit usa desde o primeiro comando. No Mac, se
   aparecer uma janela pedindo para instalar as "ferramentas de linha de
   comando", aceite: é isso que instala os dois. No Windows, instale o Python
   pelo site oficial (python.org) e o git pelo git-scm.com.
 - **Para o CV em PDF:** Google Chrome ou Microsoft Edge, e a biblioteca PyYAML.
   O `/montar-cv` confere e explica como instalar o que faltar.
+- **Opcional: uma conta no GitHub**, se você quiser uma cópia de segurança do
+  seu trabalho fora do computador. Dá para começar sem e decidir depois.
 
 ---
 
 ## Como começar
 
-1. No GitHub, abra a página deste kit e clique em **Use this template**.
-   Escolha um nome para a sua cópia e marque **Private**. Isso é importante:
-   você vai contar a sua trajetória aqui.
-2. Baixe a sua cópia para o computador. O jeito mais simples é o GitHub
-   Desktop, com a opção "Clone".
-3. Abra a pasta no app do Claude, na aba Code.
-4. Digite `/comecar`.
+1. Na página do kit no GitHub, clique no botão verde **Code** e depois em
+   **Download ZIP**. Não precisa de conta no GitHub.
+2. Descompacte o arquivo numa pasta onde você guarda documentos. Pode trocar o
+   nome da pasta, por exemplo para `meu-linkedin`.
+3. Abra essa pasta no app do Claude, na aba Code.
+4. Digite `/comecar`. Na primeira vez, ele prepara a pasta sozinho: cria o
+   histórico de versões do seu trabalho, que é o que permite receber as
+   atualizações do kit sem perder nada.
 
-Se você clonou este repositório direto, sem o "Use this template", o
-`/comecar` avisa e mostra como criar a sua cópia: a sua história mora na
-cópia privada, e nunca no template público.
+**Já usa GitHub?** Dá para começar com **Use this template**, marcando
+**Private**, e abrir no Claude o clone da sua cópia. O `/comecar` funciona
+igual, e o seu trabalho já nasce com cópia de segurança. Um clone direto deste
+repositório também funciona: o `/comecar` transforma o clone na sua cópia.
 
 A entrevista leva de 1 a 2 horas e pode ser feita em partes: dá para parar e
 voltar outro dia. Dá para fazer sem ajuda ou com alguém do lado conduzindo; o
@@ -77,14 +78,15 @@ autorize.
 
 ## Privacidade
 
-- O repositório precisa ser **privado**. O `/comecar` confere isso antes de
-  começar.
+- **Os arquivos do seu trabalho ficam só no seu computador**, a não ser que
+  você decida guardar uma cópia no GitHub. Nesse caso, o repositório precisa
+  ser **privado**, e o Claude confere isso antes de enviar.
 - Telefone, email e os PDFs do CV ficam **fora do git**, só no seu computador.
   O mesmo vale para CV antigo, PDF do perfil e export de dados do LinkedIn
   (`.pdf`, `.doc`, `.docx`, `.csv`, `.zip`) salvos dentro de `eu/`.
-- **O seu trabalho só sai do computador quando você envia para o GitHub.** O
-  Claude oferece isso ao fim de cada parte; aceite, porque um computador
-  perdido leva junto o que não foi enviado.
+- **Cópia de segurança:** um computador perdido leva junto o que só estava
+  nele. No fim da entrevista, o Claude explica como guardar uma cópia privada
+  no GitHub, se você quiser.
 - Nenhum documento (CPF, RG, dado bancário, senha) é pedido, em nenhum momento.
 
 ---
@@ -115,3 +117,7 @@ de perguntar) e quer passá-las adiante:
 Na primeira publicação, antes da primeira tag: preencha `motor/ORIGEM` com o
 endereço do repositório no GitHub (é de lá que as cópias baixam as
 atualizações) e marque o repositório como template nas configurações do GitHub.
+
+Não rode `/comecar` na pasta de manutenção: ele trocaria o nome do seu remote
+`origin` para `kit`, como faz com quem clona o template. Para desfazer:
+`git remote rename kit origin`.

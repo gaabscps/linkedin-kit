@@ -24,7 +24,15 @@ digita as respostas não muda nada.
 
 ## Preparação (toda vez, antes de qualquer pergunta)
 
-1. **Criar `eu/` na primeira vez.** Se `eu/PROGRESSO.md` não existe, copie de
+1. **Preparar a pasta.** Rode `python3 motor/preparar.py`. Ele deixa a pasta
+   pronta seja qual for o jeito que ela baixou o kit (ZIP, clone ou "Use this
+   template"), e rodar de novo não muda nada. Se ele fez algo, conte em uma
+   frase, sem jargão: por exemplo, "criei nesta pasta o histórico de versões
+   do seu trabalho, que é o que permite desfazer uma mudança e receber as
+   atualizações do kit sem perder nada". Se ele disse que a pasta já estava
+   pronta, siga sem comentar.
+
+2. **Criar `eu/` na primeira vez.** Se `eu/PROGRESSO.md` não existe, copie de
    `motor/modelos/`:
    - `VOZ.md`, `MATERIA-PRIMA.md`, `PERFIL.md`, `EXCECOES.md` e
      `PROGRESSO.md` para `eu/`;
@@ -33,19 +41,18 @@ digita as respostas não muda nada.
 
    Nunca sobrescreva um arquivo que já existe.
 
-2. **Conferir a privacidade.** Rode `python3 motor/privacidade.py`.
+3. **Conferir a privacidade.** Rode `python3 motor/privacidade.py`.
    - **Saída 1 (público):** pare. Mostre a mensagem do script e explique em uma
      frase: num repositório público, qualquer pessoa na internet lê tudo o que
      for contado aqui. Só siga depois que ela tornar o repositório privado e o
      script sair com 0.
    - **Saída 2 (não deu para confirmar):** avise, peça que ela confira pelo
      link da mensagem, e siga.
-   - **Saída 3 (esta pasta é o próprio template):** pare. Mostre a mensagem
-     do script e explique em uma frase: ela baixou o kit em vez de criar a
-     cópia dela, e a cópia é que guarda a história dela, privada.
+   - **Saída 3 (a pasta ainda é um clone do template):** o passo 1 não rodou
+     ou falhou. Rode `python3 motor/preparar.py` e confira de novo.
    - **Saída 0:** siga.
 
-3. **Identidade do git.** Se `git config --local user.name` estiver vazio
+4. **Identidade do git.** Se `git config --local user.name` estiver vazio
    (repare no `--local`: o que importa é a identidade deste repositório, e não
    a do computador, que pode ser de outra pessoa ou ter o email pessoal dela),
    pergunte o nome dela e configure só neste repositório:
@@ -58,7 +65,7 @@ digita as respostas não muda nada.
    também quando alguém conduz a entrevista no próprio computador: sem este
    passo, as versões dela sairiam assinadas por quem conduz.
 
-4. **Situar a pessoa** em até três linhas: o que vai acontecer, que leva de 1 a
+5. **Situar a pessoa** em até três linhas: o que vai acontecer, que leva de 1 a
    2 horas no total, que dá para parar quando quiser. Mostre a tabela do
    `eu/PROGRESSO.md`.
 
@@ -233,8 +240,8 @@ decisões nem comentários. É dele que ela copia.
 ## Fim
 
 Quando a Parte 4 estiver feita, resuma em três linhas o que existe agora,
-ofereça salvar tudo no GitHub (ver "Salvar fora do computador" no
-`CLAUDE.md`) e mostre os comandos:
+trate da cópia de segurança (ver "Salvar fora do computador" no `CLAUDE.md`)
+e mostre os comandos:
 
 | Comando | Quando usar |
 |---|---|

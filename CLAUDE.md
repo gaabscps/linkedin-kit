@@ -96,10 +96,21 @@ Regra de ignore pessoal (uma pasta dela que não deve entrar no git) vai em
 `eu/.gitignore`, e nunca no `.gitignore` da raiz, que é do motor.
 
 **Salvar fora do computador.** Os commits ficam só no computador dela até
-alguém enviar para o GitHub. Ao fim de cada parte da entrevista e de cada
-post, ofereça enviar (`git push`, ou o botão "Push origin" do GitHub Desktop).
-Só envie com o ok dela, e só depois de `python3 motor/privacidade.py` confirmar
-que o repositório é privado.
+alguém enviar para o GitHub. O que fazer depende de a pasta ter um remote no
+GitHub além do `kit` (o `python3 motor/privacidade.py` diz "Sem remote no
+GitHub" quando não tem):
+
+- **Com remote:** ao fim de cada parte da entrevista e de cada post, ofereça
+  enviar (`git push`, ou o botão "Push origin" do GitHub Desktop). Só envie
+  com o ok dela, e só depois de o `privacidade.py` confirmar que o
+  repositório é privado.
+- **Sem remote:** não ofereça a cada parte nem a cada post. Uma vez só, no fim
+  da entrevista, avise que tudo mora só neste computador, e que um computador
+  perdido leva junto o trabalho. Se ela quiser uma cópia de segurança, o
+  caminho é o GitHub Desktop, com uma conta no GitHub: "Add Local Repository"
+  com esta pasta, e depois "Publish repository" com "Keep this code private"
+  marcado. Guie o passo a passo; quem clica é ela. Se ela não quiser, não
+  volte ao assunto.
 
 O `.gitignore` já deixa de fora o contato (`eu/cv/contato.yml`) e os PDFs
 gerados.

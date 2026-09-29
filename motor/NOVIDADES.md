@@ -5,6 +5,15 @@ O que mudou em cada versão do motor, da mais nova para a mais antiga. O
 escrita em português simples, dizendo o que muda para a pessoa, e não o que
 mudou no código.
 
+## v1.1.0
+
+- Não precisa mais de conta no GitHub para começar: dá para baixar o kit em
+  ZIP, e o `/comecar` prepara a pasta sozinho. O GitHub vira opcional, para
+  quem quer uma cópia de segurança. Para quem já tem a cópia no GitHub, nada
+  muda.
+- Quem não usa GitHub não recebe mais a oferta de enviar ao fim de cada parte:
+  o Claude fala da cópia de segurança uma vez, no fim da entrevista.
+
 ## v1.0.1
 
 - Se você baixou o kit direto, em vez de criar a sua cópia com "Use this

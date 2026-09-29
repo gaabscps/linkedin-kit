@@ -73,7 +73,7 @@ class TestChecar(unittest.TestCase):
         chamadas = []
         codigo, mensagem = privacidade.checar(self.raiz, consulta=lambda d, r: chamadas.append(r) or 200)
         self.assertEqual(codigo, 3)
-        self.assertIn("Use this template", mensagem)
+        self.assertIn("motor/preparar.py", mensagem)
         self.assertEqual(chamadas, [])
 
     def test_ignora_o_remote_do_template(self):
