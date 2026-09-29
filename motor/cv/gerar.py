@@ -252,7 +252,7 @@ def monta_certificacoes(fatos, variante, idioma):
     linhas = []
     for cid in ids:
         cert = catalogo[cid]
-        detalhes = [str(x) for x in (cert.get("instituicao"), cert.get("ano")) if x]
+        detalhes = [str(x) for x in (cert.get("instituicao"), cert.get("ano"), loc(cert.get("situacao"), idioma)) if x]
         if cert.get("validade"):
             detalhes.append(f'{r["validade"]} {formata_data(cert["validade"], idioma)}')
         linhas.append(f"""<div class="linha-skill">

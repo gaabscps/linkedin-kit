@@ -66,7 +66,8 @@ Limites:
 - **Máximo de 90 palavras.** Acima disso o leitor pula direto para a
   experiência.
 - **Nenhum fato que não exista no `FATOS.yml`.** O resumo não é lugar de
-  estrear informação.
+  estrear informação. Um fato que só está na matéria-prima precisa virar
+  bullet antes de entrar no resumo.
 - **Nada de palavra-chave solta no fim** ("Domínio de Excel."). Se importa,
   entra dentro do movimento 2 ou do 3.
 - **Sem autoelogio** (ver `motor/regras/escrita.md`).

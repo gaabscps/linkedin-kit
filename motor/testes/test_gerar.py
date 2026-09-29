@@ -89,6 +89,11 @@ class TestDocumento(unittest.TestCase):
         self.assertIn("ACLS", doc)
         self.assertIn("Instituto Teste, 2023, válida até 2025", doc)
 
+    def test_certificacao_com_situacao(self):
+        fatos = {**FATOS, "certificacoes": [{"id": "coren", "nome": "COREN-SP", "situacao": "ativo"}]}
+        doc = gerar.monta_documento(fatos, CONTATO, {**VARIANTE, "certificacoes": ["coren"]}, TEMPLATE, "x")
+        self.assertIn('<div class="skill-itens">ativo</div>', doc)
+
     def test_validade_com_mes(self):
         fatos = {**FATOS, "certificacoes": [{"id": "bls", "nome": "BLS", "ano": 2024, "validade": "2026-11"}]}
         doc = gerar.monta_documento(fatos, CONTATO, {**VARIANTE, "certificacoes": ["bls"]}, TEMPLATE, "x")

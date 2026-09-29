@@ -6,7 +6,8 @@
 # Regras que valem para este arquivo (detalhes em motor/regras/cv.md):
 #
 # 1. O texto NASCE em português e o inglês é a tradução dele. Se um bullet
-#    mudar, mudar o `pt` primeiro e refazer o `en` a partir dele.
+#    mudar, mudar o `pt` primeiro e refazer o `en` a partir dele. O `en` só se
+#    escreve quando existe uma variante em inglês; sem ele, o gerador usa o `pt`.
 # 2. Todo bullet carrega escala, posse, resultado ou dificuldade. Se não
 #    carrega nenhuma das quatro, é descrição de cargo e não entra.
 # 3. Número que não dá para confirmar entra com `verificar: true` e não vai
@@ -93,9 +94,10 @@ skills: []
 
 # ---------------------------------------------------------------------------
 # CERTIFICAÇÕES (opcional): cursos com certificado, registro profissional e
-# habilitações. Cada item com id, nome (texto, ou pt e en), instituicao, ano e,
-# quando o certificado vence, validade (AAAA-MM, o mês em que vence; o gerador
-# avisa quando uma certificação vencida entra num CV).
+# habilitações. Cada item com id, nome (texto, ou pt e en; curto, porque vira
+# o rótulo da linha), e os opcionais instituicao, ano, situacao (por exemplo,
+# ativo) e validade (AAAA-MM, o mês em que vence; o gerador avisa quando uma
+# certificação vencida entra num CV).
 # ---------------------------------------------------------------------------
 
 certificacoes: []
