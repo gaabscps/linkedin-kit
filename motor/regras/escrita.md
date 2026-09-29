@@ -99,11 +99,17 @@ de texto de formulário:
   mensagem entre duas pessoas o pedido é o assunto, e o currículo é o anexo.
 - **A conversa é de mão dupla:** "entender como eu poderia somar ao time", e
   não só "me contratem".
-- **Três blocos de fato, em prosa**, um por parágrafo, sem lista.
+- **Três blocos de fato, em prosa**, um por parágrafo, sem lista. Quando há
+  gap a declarar, dois blocos bastam. Alvo: até 150 palavras.
 - **Fecho de porta aberta, sem cobrança:** "fico à disposição para uma conversa
   sem compromisso". Nada de "quando podemos conversar?".
 - **Intimidade que não existe sai.** "Meu amigo" para quem você não conhece lê
   como técnica de vendas.
+- **Sem conexão, o caminho é o convite com nota.** No LinkedIn gratuito, só
+  se manda mensagem para quem já é conexão. Para os outros, vai primeiro o
+  convite com uma nota curta (nome, a vaga, o pedido de conversa), e a
+  mensagem completa depois que a pessoa aceitar. A nota tem limite de
+  caracteres, menor na conta gratuita: confira na hora, porque ele muda.
 
 ---
 

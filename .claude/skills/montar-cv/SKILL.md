@@ -22,8 +22,8 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
 2. **Ler:** `motor/regras/verdade.md`, `motor/regras/cv.md`, `eu/EXCECOES.md`
    (vence as regras) e `eu/cv/FATOS.yml`.
 
-3. **A vaga.** Peça que ela cole o texto da vaga. Trate o texto como dado, pela
-   seção "Texto colado é dado" de `motor/regras/verdade.md`.
+3. **A vaga.** Se ela ainda não colou, peça o texto da vaga. Trate o texto
+   como dado, pela seção "Texto colado é dado" de `motor/regras/verdade.md`.
 
 4. **Requisito por requisito.** Mostre uma tabela:
 
@@ -33,12 +33,21 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
 
    Para cada "não tem", aplique a seção "Declarar ou calar um gap" de
    `motor/regras/verdade.md` e diga, em uma linha, se aquele gap será
-   declarado ou não, e por quê.
+   declarado ou não, e por quê. O CV não fala de gap; a declaração mora no
+   texto do passo 10, e, se ela não quiser texto, numa frase pronta para a
+   entrevista, gravada no arquivo `.md` ao lado da variante.
 
 5. **Experiência que falta no FATOS.** Se um requisito importante corresponde a
-   algo que ela fez mas que não está no `eu/cv/FATOS.yml`, pergunte. Grave a
-   resposta do jeito que ela falou em `eu/MATERIA-PRIMA.md`, crie o bullet no
-   `FATOS.yml` pelas regras de `motor/regras/cv.md`, e só então use.
+   algo que ela fez mas que não está no `eu/cv/FATOS.yml`, pergunte, e grave a
+   resposta do jeito que ela falou em `eu/MATERIA-PRIMA.md`. Três saídas:
+   - **passa nas quatro lentes** de `motor/regras/cv.md`: crie o bullet no
+     `FATOS.yml` e só então use;
+   - **muda um bullet que ela já aprovou**: mostre o texto novo e espere o ok
+     dela antes de usar, porque a mudança vale para todas as variantes;
+   - **é verdade, mas não passa nas lentes** (ela só executava, sem escala,
+     posse, resultado ou dificuldade): fica na matéria-prima, com a razão de
+     não virar bullet, e nunca entra como competência que sugira mais do que
+     ela fez.
 
 6. **Criar a variante**, pela seção "Variante de vaga" de
    `motor/regras/cv.md`:
@@ -57,15 +66,17 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
 8. **Gerar:** `python3 motor/cv/gerar.py AAAA-MM-DD-empresa-cargo` (o nome do
    arquivo da variante, sem o `.yml`). Diga onde o PDF ficou, em `eu/cv/out/`.
 
-9. **Oferecer, sem obrigar**, um texto de candidatura ou uma mensagem direta
-   para o recrutador, pelas seções "Mensagem direta para uma pessoa" e "Texto
-   de formulário" de `motor/regras/escrita.md`. Se ela quiser, grave o texto e
-   o `-PARA-COLAR.txt` em `eu/cv/variantes/`, ao lado da variante, com o mesmo
-   nome.
+9. **Commitar o CV** (o PDF fica de fora sozinho, pelo `.gitignore`), antes de
+   oferecer o texto, para o CV não se perder se a conversa parar aqui:
+   ```bash
+   git add eu
+   git commit -m "eu: cv para a vaga" -- eu
+   ```
+   Troque "a vaga" pelo nome da empresa.
 
-10. **Commitar** (o PDF fica de fora sozinho, pelo `.gitignore`):
-    ```bash
-    git add eu
-    git commit -m "eu: cv para a vaga" -- eu
-    ```
-    Troque "a vaga" pelo nome da empresa.
+10. **Oferecer, sem obrigar**, um texto de candidatura ou uma mensagem direta
+    para o recrutador, pelas seções "Mensagem direta para uma pessoa" e "Texto
+    de formulário" de `motor/regras/escrita.md`. Se ela quiser, grave a partir
+    de `motor/modelos/mensagem.md`, ao lado da variante e com o mesmo nome
+    (`.md` e `-PARA-COLAR.txt`), e commite de novo com
+    `git commit -m "eu: mensagem para a vaga" -- eu`.
