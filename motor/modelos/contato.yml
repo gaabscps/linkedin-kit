@@ -12,6 +12,11 @@ telefone:
 # pt e en.
 local:
 
+# Registro profissional com número (COREN, OAB, CRM, CREA), quando a pessoa
+# quer que ele apareça no cabeçalho do CV. O conselho e a situação vão também
+# no FATOS.yml, em certificacoes; o número fica só aqui.
+registro:
+
 # Cada link é um item com duas chaves: texto (o que aparece escrito no PDF,
 # por exemplo o endereço sem o https) e url (o endereço completo).
 links: []

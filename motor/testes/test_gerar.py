@@ -73,6 +73,11 @@ class TestDocumento(unittest.TestCase):
         self.assertNotIn("{{", doc)
         self.assertNotIn("None", doc)
 
+    def test_registro_profissional_do_contato_vai_no_cabecalho(self):
+        contato = {**CONTATO, "registro": "COREN-SP 000000"}
+        doc = gerar.monta_documento(FATOS, contato, VARIANTE, TEMPLATE, "x")
+        self.assertIn("COREN-SP 000000", doc.split("</header>")[0])
+
     def test_certificacoes_entram_quando_a_variante_pede(self):
         fatos = {**FATOS, "certificacoes": [
             {"id": "acls", "nome": "ACLS", "instituicao": "Instituto Teste", "ano": 2023, "validade": 2025},

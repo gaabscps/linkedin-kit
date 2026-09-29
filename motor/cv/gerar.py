@@ -159,6 +159,8 @@ def monta_cabecalho(fatos, contato, variante, idioma):
         linha2.append(f'<a href="mailto:{e(contato["email"])}">{e(contato["email"])}</a>')
     if contato.get("telefone"):
         linha2.append(e(contato["telefone"]))
+    if contato.get("registro"):
+        linha2.append(e(contato["registro"]))
     linhas = "<br>".join(x for x in (junta(linha1), junta(linha2)) if x)
     return f"""<header class="cabecalho">
   <div class="nome">{e(ident.get("nome"))}</div>

@@ -128,6 +128,12 @@ a cópia do documento.
 
 Data de nascimento não está nesta lista: é dado comum de formulário.
 
+Registro profissional (COREN, OAB, CRM, CREA) também não: ele é público,
+consultável no site do conselho, e é credencial de trabalho. O conselho e a
+situação ("COREN-SP, ativo") vão no `eu/cv/FATOS.yml`, em `certificacoes`. O
+número só entra se a pessoa quiser, e mora em `eu/cv/contato.yml`, campo
+`registro`, fora do git.
+
 ---
 
 ## Sigilo de terceiros
