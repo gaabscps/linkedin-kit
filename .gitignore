@@ -4,5 +4,8 @@ eu/cv/contato.yml
 # PDFs e HTMLs gerados carregam o contato impresso
 **/cv/out/
 
+# CV antigo e PDF do perfil trazem telefone e email no cabeçalho
+eu/**/*.pdf
+
 .DS_Store
 __pycache__/
