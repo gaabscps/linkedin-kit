@@ -99,7 +99,8 @@ Perguntas, uma por vez:
 4. Quando essa pessoa abrir o seu perfil, o que você quer que ela pense?
 5. O que você NÃO quer parecer?
 
-Grave em `eu/VOZ.md`, nas seções `## Posicionamento` e `## Idioma`. No
+O bruto de cada resposta vai para `## Objetivo` do `eu/MATERIA-PRIMA.md`.
+Grave o resumo em `eu/VOZ.md`, nas seções `## Posicionamento` e `## Idioma`. No
 posicionamento, registre também a regra de `motor/regras/escrita.md`,
 "Reposicionamento se deduz, não se declara", aplicada ao objetivo dela.
 
@@ -150,7 +151,9 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
    expressões que são dela, humor, o que ela evita.
 3. Pergunte, uma por vez: que tipo de post de LinkedIn você detesta ler? Que
    palavra você nunca usaria?
-4. Grave em `eu/VOZ.md`: `## Tom`, `## Estrutura que ela usa`,
+4. Guarde os textos colados, inteiros, e as respostas brutas em `## Voz` do
+   `eu/MATERIA-PRIMA.md`. Grave a análise em `eu/VOZ.md`: `## Tom`,
+   `## Estrutura que ela usa`,
    `## Proibidos pessoais` e `## Ortografia`. **Cada traço com uma citação
    curta de um texto dela**, como prova.
 5. Mostre o resumo e confirme.
