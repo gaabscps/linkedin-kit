@@ -54,7 +54,8 @@ Se ela já disse qual post foi e já colou o texto, pule os passos 1 e 2.
      exceção daquele post, e **não vira regra**.
 
 7. **Atualizar o post:** `**Status:** publicado em` com a data e o dia da
-   semana, e o texto que ela colou em `## Versão publicada`. Se o dia saiu da
+   semana, a `**Data alvo:**` trocada pela mesma data real, e o texto que ela
+   colou em `## Versão publicada`. Se o dia saiu da
    `## Cadência` do `eu/VOZ.md`, diga em uma linha o que isso muda (por
    exemplo, o dia do próximo post que depende deste).
 
