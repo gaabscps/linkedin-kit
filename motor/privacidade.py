@@ -9,7 +9,8 @@ qualquer pessoa vê. O remote "kit" aponta para o template, que é público de
 propósito, e por isso é ignorado.
 
 Saída: 0 quando é privado ou não tem remote no GitHub, 1 quando é público, 2
-quando não deu para confirmar.
+quando não deu para confirmar, 3 quando esta pasta é o próprio template (a
+pessoa clonou o kit em vez de criar a cópia dela).
 """
 
 import re
@@ -68,8 +69,19 @@ def remotes_do_github(raiz):
     return achados
 
 
+def repo_da_origem(raiz):
+    """(dono, repo) do template, lido de motor/ORIGEM, ou None."""
+    arq = raiz / "motor" / "ORIGEM"
+    return repo_github(arq.read_text(encoding="utf-8")) if arq.exists() else None
+
+
 def checar(raiz, consulta=consulta_api):
     repos = remotes_do_github(raiz)
+    origem = repo_da_origem(raiz)
+    if origem and origem in repos:
+        return 3, ("Esta pasta é o próprio template do kit, e não a sua cópia. Para começar, "
+                   f"abra https://github.com/{origem[0]}/{origem[1]}, clique em Use this template, "
+                   "marque Private, e abra no Claude a cópia que for criada.")
     if not repos:
         return 0, ("Sem remote no GitHub. Se um dia subir esta pasta para o GitHub, "
                    "crie o repositório como privado.")

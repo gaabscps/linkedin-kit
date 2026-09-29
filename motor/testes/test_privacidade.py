@@ -66,6 +66,16 @@ class TestChecar(unittest.TestCase):
         self.assertEqual(codigo, 2)
         self.assertIn("confirmar", mensagem)
 
+    def test_pasta_que_e_o_proprio_template(self):
+        (self.raiz / "motor").mkdir()
+        (self.raiz / "motor" / "ORIGEM").write_text("https://github.com/mantenedor/linkedin-kit.git\n", encoding="utf-8")
+        self.remote("origin", "git@github.com:mantenedor/linkedin-kit.git")
+        chamadas = []
+        codigo, mensagem = privacidade.checar(self.raiz, consulta=lambda d, r: chamadas.append(r) or 200)
+        self.assertEqual(codigo, 3)
+        self.assertIn("Use this template", mensagem)
+        self.assertEqual(chamadas, [])
+
     def test_ignora_o_remote_do_template(self):
         self.remote("kit", "https://github.com/mantenedor/linkedin-kit.git")
         codigo, _ = privacidade.checar(self.raiz, consulta=lambda d, r: 200)

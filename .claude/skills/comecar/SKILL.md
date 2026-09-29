@@ -40,6 +40,9 @@ digita as respostas não muda nada.
      script sair com 0.
    - **Saída 2 (não deu para confirmar):** avise, peça que ela confira pelo
      link da mensagem, e siga.
+   - **Saída 3 (esta pasta é o próprio template):** pare. Mostre a mensagem
+     do script e explique em uma frase: ela baixou o kit em vez de criar a
+     cópia dela, e a cópia é que guarda a história dela, privada.
    - **Saída 0:** siga.
 
 3. **Identidade do git.** Se `git config --local user.name` estiver vazio

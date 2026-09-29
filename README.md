@@ -38,6 +38,10 @@ com as suas palavras.
 3. Abra a pasta no app do Claude, na aba Code.
 4. Digite `/comecar`.
 
+Se você clonou este repositório direto, sem o "Use this template", o
+`/comecar` avisa e mostra como criar a sua cópia: a sua história mora na
+cópia privada, e nunca no template público.
+
 A entrevista leva de 1 a 2 horas e pode ser feita em partes: dá para parar e
 voltar outro dia. Dá para fazer sem ajuda ou com alguém do lado conduzindo; o
 caminho é o mesmo.
