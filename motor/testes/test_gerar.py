@@ -1,6 +1,8 @@
 import contextlib
 import datetime
 import io
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -178,6 +180,24 @@ class TestPdfDeVerdade(unittest.TestCase):
             pdf = pasta_cv / "out" / "Ana-CV.pdf"
             self.assertTrue(pdf.exists())
             self.assertGreater(pdf.stat().st_size, 1000)
+
+    @unittest.skipUnless(shutil.which("pdftotext"), "pdftotext não instalado")
+    def test_texto_do_pdf_sai_na_ordem_de_leitura(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            pasta_cv = Path(tmp) / "cv"
+            (pasta_cv / "variantes").mkdir(parents=True)
+            (pasta_cv / "FATOS.yml").write_text(yaml.safe_dump(FATOS, allow_unicode=True), encoding="utf-8")
+            (pasta_cv / "contato.yml").write_text(yaml.safe_dump(CONTATO, allow_unicode=True), encoding="utf-8")
+            (pasta_cv / "variantes" / "base.yml").write_text(yaml.safe_dump(VARIANTE, allow_unicode=True), encoding="utf-8")
+            with contextlib.redirect_stdout(io.StringIO()):
+                gerar.main(["--eu", tmp, "base"])
+            texto = subprocess.run(
+                ["pdftotext", "-raw", str(pasta_cv / "out" / "Ana-CV.pdf"), "-"],
+                capture_output=True, text=True, check=True,
+            ).stdout.lower()
+            for titulo in ("experiência", "competências", "formação"):
+                self.assertIn(titulo, texto)
+            self.assertLess(texto.index("coordenei a escala"), texto.index("competências"))
 
 
 if __name__ == "__main__":

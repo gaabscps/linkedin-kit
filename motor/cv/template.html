@@ -42,9 +42,10 @@ a { color: var(--accent-ink); text-decoration: none; }
   line-height: 1.1;
 }
 
+/* Sem letter-spacing nos títulos: letra espaçada sai como "E X P" na extração
+   de texto, e o ATS não reconhece a palavra. */
 .titulo {
   font-size: 9pt;
-  letter-spacing: 1.6pt;
   text-transform: uppercase;
   color: var(--accent-ink);
   margin-top: 3pt;
@@ -72,7 +73,6 @@ a { color: var(--accent-ink); text-decoration: none; }
 .secao > h2 {
   font-size: 8pt;
   font-weight: 700;
-  letter-spacing: 2pt;
   text-transform: uppercase;
   color: var(--accent-ink);
   padding-bottom: 3pt;
@@ -108,23 +108,12 @@ a { color: var(--accent-ink); text-decoration: none; }
   margin: 2pt 0 4pt;
 }
 
-/* Marcador próprio no lugar do bullet padrão do navegador. */
-ul { list-style: none; }
-li {
-  position: relative;
-  padding-left: 9pt;
-  margin-bottom: 2.5pt;
-}
-li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 5.2pt;
-  width: 3pt;
-  height: 3pt;
-  background: var(--accent);
-  border-radius: 0.5pt;
-}
+/* Marcador nativo da lista, colorido pelo ::marker. Marcador desenhado com
+   position: absolute joga o texto dos itens para o fim do PDF, e o ATS lê o
+   PDF na ordem em que o texto está guardado. */
+ul { list-style: square; padding-left: 10pt; }
+li { margin-bottom: 2.5pt; padding-left: 1pt; }
+li::marker { color: var(--accent); }
 
 /* ---------- projetos ---------- */
 
