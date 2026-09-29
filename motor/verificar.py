@@ -6,7 +6,7 @@ Uso:
     python3 motor/verificar.py --template  # e também que eu/ está vazia
 
 Procura travessão, meia-risca e colchete de placeholder nos arquivos do motor,
-e skill que cite motor/exemplo/. A pasta eu/ é da pessoa e só entra no modo
+skill que cite motor/exemplo/, e caminho `motor/...` citado que não existe. A pasta eu/ é da pessoa e só entra no modo
 --template, que confere se ela está vazia.
 """
 
@@ -23,6 +23,8 @@ PALAVRAS_PLACEHOLDER = "seu|sua|nome|preencher|inserir|exemplo|empresa|cargo|dat
 PLACEHOLDER = re.compile(
     r"\[(?:[A-ZÀ-Ý][A-ZÀ-Ý _]{2,}|(?i:" + PALAVRAS_PLACEHOLDER + r")\b[^\]\n]*)\](?!\()"
 )
+CAMINHO_CITADO = re.compile(r"`(motor/[^`\s]*)`")
+MARCAS_DE_PADRAO = ("*", "...", "AAAA", "NNN")
 PASTAS_IGNORADAS = {"__pycache__", "out", ".git"}
 ARQUIVO_LIVRE_NO_TEMPLATE = "eu/LEIA-ME.md"
 
@@ -48,7 +50,7 @@ def ler_texto(arq):
         return None
 
 
-def problemas_da_linha(rel, numero, linha):
+def problemas_da_linha(rel, numero, linha, raiz):
     """Lista os problemas de uma linha de um arquivo do motor."""
     achados = []
     for caractere, nome in TRACOS.items():
@@ -59,6 +61,10 @@ def problemas_da_linha(rel, numero, linha):
         achados.append(f"{rel}:{numero}: colchete de placeholder {marca.group(0)}")
     if rel.startswith(".claude/skills/") and "motor/exemplo" in linha:
         achados.append(f"{rel}:{numero}: skill citando motor/exemplo/")
+    if not rel.startswith("motor/testes/"):
+        for caminho in CAMINHO_CITADO.findall(linha):
+            if not any(m in caminho for m in MARCAS_DE_PADRAO) and not (raiz / caminho).exists():
+                achados.append(f"{rel}:{numero}: caminho citado não existe: {caminho}")
     return achados
 
 
@@ -85,7 +91,7 @@ def achar_problemas(raiz, modo_template=False):
             continue
         rel = arq.relative_to(raiz).as_posix()
         for numero, linha in enumerate(texto.splitlines(), 1):
-            problemas.extend(problemas_da_linha(rel, numero, linha))
+            problemas.extend(problemas_da_linha(rel, numero, linha, raiz))
     if modo_template:
         problemas.extend(arquivos_pessoais(raiz))
     return problemas

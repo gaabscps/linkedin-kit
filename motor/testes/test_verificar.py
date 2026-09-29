@@ -59,6 +59,22 @@ class TestVerificar(unittest.TestCase):
             [".claude/skills/comecar/SKILL.md:1: skill citando motor/exemplo/"],
         )
 
+    def test_acusa_caminho_do_motor_citado_que_nao_existe(self):
+        self.escreve("motor/modelos/post.md", "modelo\n")
+        self.escreve(
+            ".claude/skills/escrever-post/SKILL.md",
+            "Copie `motor/modelos/post.md` e depois `motor/modelos/sumiu.md`.\n",
+        )
+        self.assertEqual(
+            verificar.achar_problemas(self.raiz),
+            [".claude/skills/escrever-post/SKILL.md:1: caminho citado não existe: motor/modelos/sumiu.md"],
+        )
+
+    def test_caminho_com_padrao_nao_e_conferido(self):
+        self.escreve("CLAUDE.md", "Os arquivos `motor/modelos/*` e `motor/regras/`.\n")
+        self.escreve("motor/regras/a.md", "Regra limpa.\n")
+        self.assertEqual(verificar.achar_problemas(self.raiz), [])
+
     def test_ignora_eu_fora_do_modo_template(self):
         self.escreve("eu/VOZ.md", "texto dela " + TRAVESSAO + " com travessão\n")
         self.assertEqual(verificar.achar_problemas(self.raiz), [])
