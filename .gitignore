@@ -4,8 +4,13 @@ eu/cv/contato.yml
 # PDFs e HTMLs gerados carregam o contato impresso
 **/cv/out/
 
-# CV antigo e PDF do perfil trazem telefone e email no cabeçalho
-eu/**/*.pdf
+# CV antigo, PDF do perfil e export de dados do LinkedIn trazem telefone e
+# email. Regra de ignore pessoal vai em eu/.gitignore, que o /atualizar não toca.
+eu/**/*.[pP][dD][fF]
+eu/**/*.[dD][oO][cC]
+eu/**/*.[dD][oO][cC][xX]
+eu/**/*.[cC][sS][vV]
+eu/**/*.[zZ][iI][pP]
 
 .DS_Store
 __pycache__/
