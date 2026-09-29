@@ -146,6 +146,18 @@ class TestAvisos(unittest.TestCase):
                         {**self.CONTATO_REAL, "links": [{"texto": "linkedin.com/in/ana-exemplo", "url": "x"}]}):
             self.assertTrue(any("contato" in a for a in gerar.avisos(FATOS, contato, VARIANTE)), contato)
 
+    def test_avisa_bullet_com_numero_nao_confirmado(self):
+        exp = {**FATOS["experiencias"][0], "bullets": [
+            {"id": "hosp-uti", "pt": "Coordenei a escala de 12 leitos."},
+            {"id": "hosp-queda", "pt": "Reduzi em 40% as quedas.", "verificar": True},
+        ]}
+        fatos = {**FATOS, "experiencias": [exp]}
+        variante = {**VARIANTE, "experiencias": {"hosp": ["hosp-uti", "hosp-queda"]}}
+        avisos = gerar.avisos(fatos, self.CONTATO_REAL, variante)
+        self.assertTrue(any("hosp-queda" in a and "verificar" in a for a in avisos), avisos)
+        variante_sem = {**VARIANTE, "experiencias": {"hosp": ["hosp-uti"]}}
+        self.assertEqual(gerar.avisos(fatos, self.CONTATO_REAL, variante_sem), [])
+
     def test_avisa_certificacao_perto_de_vencer(self):
         fatos = {**FATOS, "certificacoes": [{"id": "bls", "nome": "BLS", "validade": "2026-11"}]}
         variante = {**VARIANTE, "certificacoes": ["bls"]}
@@ -199,6 +211,24 @@ class TestChrome(unittest.TestCase):
             procura=lambda n: "/usr/bin/chromium" if n == "chromium" else None,
         )
         self.assertEqual(achado, "/usr/bin/chromium")
+
+    def test_chrome_instalado_so_para_o_usuario_no_windows(self):
+        esperado = "C:\\Users\\ana\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+        achado = gerar.acha_chrome(
+            env={"LOCALAPPDATA": "C:\\Users\\ana\\AppData\\Local"},
+            existe=lambda p: p == esperado, procura=lambda n: None,
+        )
+        self.assertEqual(achado, esperado)
+
+    def test_edge_serve_quando_nao_ha_chrome(self):
+        edge = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+        achado = gerar.acha_chrome(env={}, existe=lambda p: p == edge, procura=lambda n: None)
+        self.assertEqual(achado, edge)
+
+    def test_chrome_na_pasta_de_aplicativos_do_usuario_no_mac(self):
+        esperado = "/Users/ana/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        achado = gerar.acha_chrome(env={"HOME": "/Users/ana"}, existe=lambda p: p == esperado, procura=lambda n: None)
+        self.assertEqual(achado, esperado)
 
     def test_nenhum_chrome(self):
         self.assertIsNone(gerar.acha_chrome(env={}, existe=lambda p: False, procura=lambda n: None))

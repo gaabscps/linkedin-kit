@@ -39,15 +39,18 @@ CAMINHOS_CHROME = [
     "/Applications/Chromium.app/Contents/MacOS/Chromium",
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
     r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+    r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
 ]
-NOMES_CHROME = ["google-chrome", "google-chrome-stable", "chromium", "chromium-browser", "chrome"]
+NOMES_CHROME = ["google-chrome", "google-chrome-stable", "chromium", "chromium-browser", "chrome",
+                "microsoft-edge", "msedge"]
 
 MSG_YAML = (
     "Falta o PyYAML, a biblioteca que lê os arquivos .yml.\n"
     "Para instalar, rode: python3 -m pip install --user pyyaml"
 )
 MSG_CHROME = (
-    "Não achei o Google Chrome, que é usado para imprimir o PDF.\n"
+    "Não achei o Google Chrome (nem o Microsoft Edge), que é usado para imprimir o PDF.\n"
     "Instale pelo site oficial (google.com/chrome) ou diga onde ele está na\n"
     "variável CHROME, por exemplo: CHROME=/caminho/do/chrome python3 motor/cv/gerar.py"
 )
@@ -77,12 +80,22 @@ ROTULOS = {
 }
 
 
+def caminhos_chrome(env):
+    """Caminhos fixos do Chrome, mais os que dependem da pasta do usuário."""
+    caminhos = list(CAMINHOS_CHROME)
+    if env.get("HOME"):
+        caminhos.append(env["HOME"] + "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+    if env.get("LOCALAPPDATA"):
+        caminhos.append(env["LOCALAPPDATA"] + r"\Google\Chrome\Application\chrome.exe")
+    return caminhos
+
+
 def acha_chrome(env=None, existe=os.path.exists, procura=shutil.which):
-    """Devolve o caminho do Chrome: variável CHROME, caminho fixo ou PATH."""
+    """Devolve o caminho do Chrome (ou do Edge): variável CHROME, caminho fixo ou PATH."""
     env = os.environ if env is None else env
     if env.get("CHROME"):
         return env["CHROME"]
-    for caminho in CAMINHOS_CHROME:
+    for caminho in caminhos_chrome(env):
         if existe(caminho):
             return caminho
     for nome in NOMES_CHROME:
@@ -299,6 +312,13 @@ def avisos(fatos, contato, variante):
     if any(sinal in campo.lower() for campo in campos for sinal in SINAIS_DE_EXEMPLO):
         lista.append("O contato parece de exemplo (example.com, a palavra exemplo ou telefone 90000). "
                      "Confira eu/cv/contato.yml antes de enviar.")
+    catalogo = por_id(fatos.get("experiencias"))
+    for exp_id, ids_bullets in (variante.get("experiencias") or {}).items():
+        bullets = por_id(catalogo.get(exp_id, {}).get("bullets"))
+        for bid in ids_bullets or []:
+            if bullets.get(bid, {}).get("verificar"):
+                lista.append(f"O bullet {bid} está marcado verificar: true (número não confirmado) "
+                             "e não deveria ir num CV enviado. Confirme o número ou tire o bullet.")
     lista.extend(f"A certificação {nome} está vencida." for nome in certificacoes_vencidas(fatos, variante))
     lista.extend(f"A certificação {nome} vence nos próximos 3 meses." for nome in certificacoes_perto_de_vencer(fatos, variante))
     return lista
