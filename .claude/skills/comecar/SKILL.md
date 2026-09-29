@@ -149,7 +149,8 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
    - a disponibilidade: presencial, híbrido ou remoto, e em que região;
    - o contato: email, telefone, cidade e os links que ela quer no CV. Grave
      em `eu/cv/contato.yml` e explique que esse arquivo fica fora do git, só
-     no computador dela.
+     no computador dela. Esta é a única resposta que não vai para a
+     matéria-prima: telefone e email não se repetem em nenhum outro arquivo.
 
    Nome, título e disponibilidade vão para `identidade` no `eu/cv/FATOS.yml`.
 6. **Bullets.** Converta o bruto em bullets no `eu/cv/FATOS.yml`, seguindo
@@ -159,7 +160,8 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
 7. **Variante base.** Copie `motor/modelos/variante.yml` para
    `eu/cv/variantes/base-pt.yml`, com `arquivo:` formado pelo nome dela sem
    acento, com hífens no lugar dos espaços, seguido de `-CV-PT`, e com todos os
-   bullets aprovados na ordem da linha do tempo. Se o público dela é em inglês,
+   bullets aprovados na ordem da linha do tempo, menos os marcados
+   `verificar: true`. Se o público dela é em inglês,
    crie também `base-en.yml` com `idioma: en` e `arquivo:` terminando em
    `-CV-EN`.
 
@@ -170,7 +172,8 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
    revisado por outra pessoa, ou escrito em tom de documento oficial, não
    mostra como ela escreve. Antes de ela colar, avise que nome e detalhe de
    terceiros (paciente, cliente, aluno, colega) e telefone ou email de outras
-   pessoas saem do texto. Se algo assim vier mesmo assim, guarde o texto com o
+   pessoas saem do texto, e a assinatura dela também (email e telefone dela
+   moram só no `contato.yml`). Se algo assim vier mesmo assim, guarde o texto com o
    trecho trocado por uma descrição em palavras, como "o paciente do leito",
    sem colchete.
 2. Analise nos textos: como cumprimenta, se fala em primeira pessoa e como
@@ -226,8 +229,9 @@ decisões nem comentários. É dele que ela copia.
 
 ## Fim
 
-Quando a Parte 4 estiver feita, resuma em três linhas o que existe agora e
-mostre os comandos:
+Quando a Parte 4 estiver feita, resuma em três linhas o que existe agora,
+ofereça salvar tudo no GitHub (ver "Salvar fora do computador" no
+`CLAUDE.md`) e mostre os comandos:
 
 | Comando | Quando usar |
 |---|---|

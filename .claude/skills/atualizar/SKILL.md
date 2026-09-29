@@ -28,9 +28,15 @@ intacta.
    | `ESTADO: disponivel` | Diga qual é a versão nova e vá para o passo 4. |
 
 3. **Edições no motor.** Mostre o que foi editado, em linguagem simples (qual
-   arquivo, o que mudou). Para cada edição, proponha o texto de uma entrada em
-   `eu/EXCECOES.md` que preserve a intenção dela, no formato daquele arquivo.
-   Com o ok dela, grave, commite:
+   arquivo, o que mudou). Cada edição tem um destino, conforme o tipo:
+   - **mudança numa regra ou skill do kit:** proponha o texto de uma entrada
+     em `eu/EXCECOES.md` que preserve a intenção dela;
+   - **linha nova no `.gitignore` da raiz:** mova a linha para
+     `eu/.gitignore` (crie o arquivo se não existir), que o git também lê e o
+     `/atualizar` nunca toca;
+   - **uma skill que ela criou** (uma pasta em `.claude/skills/` que não é do
+     kit): não precisa de nada, a atualização preserva.
+   Com o ok dela, grave, confira com `git status --short eu`, commite:
    ```bash
    git add eu
    git commit -m "eu: excecoes antes de atualizar" -- eu
@@ -54,4 +60,4 @@ intacta.
 
 6. **Sanidade.** Rode `python3 motor/verificar.py` e confirme que saiu `ok`.
 
-Nunca faça push sem ela pedir.
+Nunca faça push sem o ok dela.

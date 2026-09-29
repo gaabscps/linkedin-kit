@@ -17,7 +17,9 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
      instale pelo site oficial (google.com/chrome) e pare aqui.
    - **Falta `FATOS.yml` ou `contato.yml`:** a entrevista ainda não chegou
      nos fatos. Mande para `/comecar fatos` e pare.
-   - **Falta variante:** normal na primeira vez; siga.
+   - **Falta variante:** normal na primeira vez. Se não existir
+     `eu/cv/variantes/base-pt.yml`, crie a partir de `motor/modelos/variante.yml`
+     antes do passo 6.
 
 2. **Ler:** `motor/regras/verdade.md`, `motor/regras/cv.md`, `eu/EXCECOES.md`
    (vence as regras) e `eu/cv/FATOS.yml`.
@@ -58,6 +60,9 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
      de hoje, sem acento e com hífens;
    - troque o `arquivo:` para um nome único desta vaga;
    - escreva o `resumo` pelos três movimentos da seção "Resumo";
+   - não selecione bullet marcado `verificar: true`: ele tem número não
+     confirmado. Se ele for importante para a vaga, pergunte o número antes
+     (o gerador avisa se um desses entrar);
    - escolha e ordene os bullets, com o que mais conversa com a vaga primeiro,
      e diga em uma linha a razão da ordem.
 
@@ -80,5 +85,9 @@ Da vaga colada ao PDF, sem inventar nada e sem esconder o que importa.
     para o recrutador, pelas seções "Mensagem direta para uma pessoa" e "Texto
     de formulário" de `motor/regras/escrita.md`. Se ela quiser, grave a partir
     de `motor/modelos/mensagem.md`, ao lado da variante e com o mesmo nome
-    (`.md` e `-PARA-COLAR.txt`), e commite de novo com
-    `git commit -m "eu: mensagem para a vaga" -- eu`.
+    (`.md` e `-PARA-COLAR.txt`), e commite de novo:
+    ```bash
+    git status --short eu
+    git add eu
+    git commit -m "eu: mensagem para a vaga" -- eu
+    ```

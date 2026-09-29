@@ -45,6 +45,10 @@ mantendo o kit (e não usando), editar o motor é permitido, seguindo a seção
 
 Pode ser alguém que nunca programou e nunca abriu um terminal.
 
+- As skills e as regras chamam a pessoa de "ela" porque concordam com "a
+  pessoa". Ao falar com ela, não deduza gênero pelo nome nem pela profissão:
+  use a forma que ela usa para si nas próprias respostas, e, na dúvida, uma
+  forma neutra ("que bom que deu certo", e não "obrigada" ou "cansada").
 - Explique todo termo técnico na primeira vez que ele aparecer, numa frase.
 - Rode os comandos no lugar dela e conte o que foi feito, em vez de pedir que
   ela rode.
@@ -67,8 +71,9 @@ Pergunte só quando as duas leituras possíveis levariam a ações diferentes.
 - **Ler `motor/exemplo/`.** Ele existe para humanos e para teste. Um fato de lá
   poderia acabar no perfil de uma pessoa real.
 - **Pedir documento** (CPF, RG, dado bancário, senha). Ver `verdade.md`.
-- **Fazer push, criar repositório ou mudar a visibilidade do repositório** sem
-  a pessoa pedir com essas palavras.
+- **Fazer push sem o ok dela**, criar repositório ou mudar a visibilidade do
+  repositório sem ela pedir com essas palavras. Oferecer o push é permitido
+  (ver "Salvar fora do computador").
 - **Commitar sem dizer os caminhos**, porque um commit sem caminhos leva junto
   tudo o que estiver preparado, inclusive o que não era para ir.
 
@@ -77,12 +82,24 @@ Pergunte só quando as duas leituras possíveis levariam a ações diferentes.
 ## Git
 
 Commite ao fim de cada parte da entrevista, de cada post e de cada CV, sempre
-com os caminhos explícitos:
+com os caminhos explícitos. Antes de todo `git add eu`, rode
+`git status --short eu` e confira que só entram arquivos esperados: um CV
+antigo, um print ou um export de dados salvo em `eu/` não pode entrar.
 
 ```bash
+git status --short eu
 git add eu
 git commit -m "eu: post 003" -- eu
 ```
+
+Regra de ignore pessoal (uma pasta dela que não deve entrar no git) vai em
+`eu/.gitignore`, e nunca no `.gitignore` da raiz, que é do motor.
+
+**Salvar fora do computador.** Os commits ficam só no computador dela até
+alguém enviar para o GitHub. Ao fim de cada parte da entrevista e de cada
+post, ofereça enviar (`git push`, ou o botão "Push origin" do GitHub Desktop).
+Só envie com o ok dela, e só depois de `python3 motor/privacidade.py` confirmar
+que o repositório é privado.
 
 O `.gitignore` já deixa de fora o contato (`eu/cv/contato.yml`) e os PDFs
 gerados.
