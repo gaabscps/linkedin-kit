@@ -3,7 +3,9 @@
 <!--
 Escrito na Parte 3 do /comecar. Todo texto que vai ser colado no LinkedIn fica
 sem quebra de linha dentro do parágrafo, pronto para copiar. Cada bloco guarda
-também as decisões: o que foi escolhido, por quê, e o que foi descartado.
+também as decisões: o que foi escolhido, por quê, e o que foi descartado, e
+uma linha "Colado no LinkedIn em:" com a data. Quando um texto muda depois de
+colado, avise que o LinkedIn precisa ser atualizado.
 -->
 
 ## Headline
