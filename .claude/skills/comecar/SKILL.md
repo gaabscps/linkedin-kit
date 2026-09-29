@@ -123,7 +123,11 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
    conversa retomada sabe o que falta perguntar.
 3. **Cada experiência, da mais recente para a mais antiga:**
    - o contexto: o que a empresa faz e o porte dela;
-   - uma cena: um momento de trabalho que ela lembra bem;
+   - uma cena: um momento de trabalho que ela lembra bem. **Antes de pedir,
+     avise** que a história se conta sem nome nem detalhe que identifique quem
+     foi atendido (ver "Sigilo de terceiros" em `motor/regras/verdade.md`). Se
+     um nome aparecer mesmo assim, grave a resposta já sem ele: nunca grave
+     para limpar depois, porque o que foi commitado fica no histórico;
    - primeiro, firme os números que a própria cena trouxe: de onde veio cada
      um, e se houve ação dela ligada ao resultado (ver "Número" em
      `motor/regras/verdade.md`);
@@ -136,9 +140,18 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
    subseção por experiência. Se uma história render post, anote também em
    `## Histórias` e em `## O que ainda rende post`.
 4. **Formação, idiomas e competências**, nas palavras da área dela.
-5. **Contato:** email, telefone, cidade e os links que ela quer no CV. Grave
-   em `eu/cv/contato.yml` e explique que esse arquivo fica fora do git, só no
-   computador dela.
+5. **Topo do CV**, uma pergunta por vez:
+   - o nome profissional, que precisa ser igual no CV e no LinkedIn (é por ele
+     que o recrutador procura o perfil);
+   - o título: proponha o cargo atual dela, sem nível que ela não teve e sem
+     anunciar a área para onde ela quer ir (ver "Título" em `verdade.md` e
+     "Reposicionamento se deduz" em `escrita.md`);
+   - a disponibilidade: presencial, híbrido ou remoto, e em que região;
+   - o contato: email, telefone, cidade e os links que ela quer no CV. Grave
+     em `eu/cv/contato.yml` e explique que esse arquivo fica fora do git, só
+     no computador dela.
+
+   Nome, título e disponibilidade vão para `identidade` no `eu/cv/FATOS.yml`.
 6. **Bullets.** Converta o bruto em bullets no `eu/cv/FATOS.yml`, seguindo
    `motor/regras/cv.md` (as quatro lentes, a forma do bullet, com `tags`,
    `lente` e `verificar` quando couber). Escreva o `resumo.base` pelos três
