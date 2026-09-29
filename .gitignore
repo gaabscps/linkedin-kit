@@ -1,0 +1,8 @@
+# Contato da pessoa: telefone, email e cidade nunca entram no git
+eu/cv/contato.yml
+
+# PDFs e HTMLs gerados carregam o contato impresso
+**/cv/out/
+
+.DS_Store
+__pycache__/
