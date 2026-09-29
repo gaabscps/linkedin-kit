@@ -114,6 +114,9 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
 2. **Linha do tempo.** Monte a lista de experiências com empresa, cargo, mês e
    ano de início e de fim, e **confirme cada data com ela**. A linha do tempo é
    o que mais envelhece errado num currículo. Emprego atual tem fim `atual`.
+   Mantenha no topo de `## Trajetória` duas listas, atualizadas a cada
+   resposta: **"Confirmado com ela"** e **"A confirmar"**. É por elas que uma
+   conversa retomada sabe o que falta perguntar.
 3. **Cada experiência, da mais recente para a mais antiga:**
    - o contexto: o que a empresa faz e o porte dela;
    - uma cena: um momento de trabalho que ela lembra bem;

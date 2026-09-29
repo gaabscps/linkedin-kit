@@ -1,4 +1,4 @@
-# Contato da pessoa: telefone, email e cidade nunca entram no git
+# Contato do cabeçalho do CV: telefone e email nunca entram no git
 eu/cv/contato.yml
 
 # PDFs e HTMLs gerados carregam o contato impresso

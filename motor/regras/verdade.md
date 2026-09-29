@@ -112,6 +112,11 @@ formulário.
 Isso não se destrava com autorização da pessoa. Se um formulário pedir um
 desses dados, quem preenche é ela, com as próprias mãos.
 
+Sugerir que a pessoa **consulte** um documento para confirmar uma data ou um
+cargo ("a data de admissão aparece na Carteira de Trabalho Digital") é
+permitido: o que ela devolve é a data ou o cargo, e nunca o número, a foto ou
+a cópia do documento.
+
 Data de nascimento não está nesta lista: é dado comum de formulário.
 
 ---
