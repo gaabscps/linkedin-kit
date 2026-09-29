@@ -118,9 +118,13 @@ Data de nascimento não está nesta lista: é dado comum de formulário.
 
 ## Contato fora do git
 
-Telefone, email, cidade e links moram só em `eu/cv/contato.yml`, que o git
-ignora. Nenhum outro arquivo repete esses valores. O que entra no histórico do
-git fica lá para sempre, mesmo depois de apagado do arquivo.
+O contato do cabeçalho do CV (telefone, email, cidade e links) mora em
+`eu/cv/contato.yml`, que o git ignora. **Telefone e email não se repetem em
+nenhum outro arquivo.** O que entra no histórico do git fica lá para sempre,
+mesmo depois de apagado do arquivo.
+
+Cidade e região não são segredo: aparecem no próprio perfil do LinkedIn. Onde
+a pessoa quer trabalhar é posicionamento, e pode ser gravado como ela falou.
 
 ---
 
