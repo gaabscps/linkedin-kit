@@ -94,17 +94,19 @@ A régua é o peso do item **na vaga**, e não o tamanho do buraco:
   no primeiro minuto. Declarar converte "não tem" em "sabe o tamanho do que
   falta".
 - **Gap de ferramenta dentro de uma habilidade que a pessoa tem: declarar, na
-  mesma frase da habilidade.** "Power BI eu ainda não usei; os indicadores do
-  setor eu montava no Excel, com tabela dinâmica." A frase mostra que ela
-  entende qual é a habilidade e qual é a ferramenta.
+  mesma frase da habilidade.** Numa vaga de vendas: "Salesforce eu ainda não
+  usei; a minha carteira eu organizava no HubSpot, com funil por etapa." A
+  frase mostra que a pessoa entende qual é a habilidade e qual é a ferramenta.
 - **Gap periférico (a própria vaga chama de diferencial): não mencionar.** É
   entregar um "não" que ninguém cobrou. Responde se perguntarem.
 
 A forma importa tanto quanto a decisão:
 
-- **Ancorar no que tem, não no vazio.** "Ainda não conduzi uma acreditação; o
-  que eu faço hoje é manter os protocolos que ela audita" funciona. "Não tenho
-  experiência com acreditação" não.
+- **Ancorar no que tem, não no vazio.** Numa vaga de docência: "Ainda não dei
+  aula no ensino superior; o que eu faço hoje é preparar as turmas do 3º ano
+  para o vestibular" funciona. "Não tenho experiência com ensino superior" não.
+  A âncora é sempre um fato que está em `eu/cv/FATOS.yml` ou em
+  `eu/MATERIA-PRIMA.md`, e nunca a frase de um exemplo daqui.
 - **Nunca uma lista de gaps no fim do texto.** O último parágrafo é o que fica
   na memória.
 - **No máximo dois gaps declarados por texto.** Acima disso, o texto vira

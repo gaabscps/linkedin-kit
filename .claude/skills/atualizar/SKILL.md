@@ -41,6 +41,17 @@ intacta.
    `ESTADO: aplicado`, resuma as novidades que o script mostrou, em português
    simples, dizendo o que muda para ela no dia a dia.
 
-5. **Sanidade.** Rode `python3 motor/verificar.py` e confirme que saiu `ok`.
+5. **Campos novos nos modelos.** O `/atualizar` nunca mexe em `eu/`, então uma
+   seção ou um campo que um modelo ganhou não chega sozinho nos arquivos dela.
+   Compare cada arquivo de `motor/modelos/` com o arquivo de mesmo nome em
+   `eu/` (ou `eu/cv/`). Se o modelo tem uma seção ou um campo que o arquivo
+   dela não tem, diga o que é, em uma linha, e ofereça acrescentar, vazio, sem
+   tocar em nada do que ela já escreveu. Commite com o ok dela:
+   ```bash
+   git add eu
+   git commit -m "eu: campos novos dos modelos" -- eu
+   ```
+
+6. **Sanidade.** Rode `python3 motor/verificar.py` e confirme que saiu `ok`.
 
 Nunca faça push sem ela pedir.
