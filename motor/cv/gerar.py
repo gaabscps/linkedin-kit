@@ -19,6 +19,7 @@ import argparse
 import datetime
 import html
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -55,6 +56,9 @@ MSG_CONTATO = (
     "Ele fica fora do git de propósito. Rode /comecar fatos, ou copie\n"
     "motor/modelos/contato.yml para lá e preencha."
 )
+
+LIMITE_RESUMO = 90
+SINAIS_DE_EXEMPLO = ("example.com", "example.org", "exemplo", "90000-", "00000-")
 
 MESES = {
     "pt": ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
@@ -169,10 +173,14 @@ def monta_cabecalho(fatos, contato, variante, idioma):
 </header>"""
 
 
-def monta_resumo(fatos, variante, idioma):
+def texto_do_resumo(fatos, variante, idioma):
     escolha = variante.get("resumo", "base")
     base = (fatos.get("resumo") or {}).get("base")
-    texto = loc(base, idioma) if escolha == "base" else loc(escolha, idioma)
+    return loc(base, idioma) if escolha == "base" else loc(escolha, idioma)
+
+
+def monta_resumo(fatos, variante, idioma):
+    texto = texto_do_resumo(fatos, variante, idioma)
     return f'<p class="resumo">{e(texto)}</p>' if texto else ""
 
 
@@ -279,6 +287,43 @@ def certificacoes_vencidas(fatos, variante, hoje=None):
     ]
 
 
+def avisos(fatos, contato, variante):
+    """Problemas que não impedem gerar, mas que a pessoa precisa ver antes de enviar."""
+    idioma = variante.get("idioma", "pt")
+    lista = []
+    palavras = len(str(texto_do_resumo(fatos, variante, idioma)).split())
+    if palavras > LIMITE_RESUMO:
+        lista.append(f"O resumo tem {palavras} palavras, acima do limite de {LIMITE_RESUMO}.")
+    campos = [str(contato.get("email") or ""), str(contato.get("telefone") or "")]
+    campos += [f'{link.get("texto", "")} {link.get("url", "")}' for link in contato.get("links") or []]
+    if any(sinal in campo.lower() for campo in campos for sinal in SINAIS_DE_EXEMPLO):
+        lista.append("O contato parece de exemplo (example.com, a palavra exemplo ou telefone 90000). "
+                     "Confira eu/cv/contato.yml antes de enviar.")
+    lista.extend(f"A certificação {nome} está vencida." for nome in certificacoes_vencidas(fatos, variante))
+    lista.extend(f"A certificação {nome} vence nos próximos 3 meses." for nome in certificacoes_perto_de_vencer(fatos, variante))
+    return lista
+
+
+def paginas_do_pdf(caminho):
+    """Número de páginas lido da árvore de páginas do PDF, ou None se não achar."""
+    contagens = re.findall(rb"/Type\s*/Pages\b[^>]*?/Count\s+(\d+)", Path(caminho).read_bytes())
+    return max(int(c) for c in contagens) if contagens else None
+
+
+def certificacoes_perto_de_vencer(fatos, variante, hoje=None, meses=3):
+    """Nomes das certificações escolhidas que vencem nos próximos meses, ainda válidas."""
+    hoje = hoje or datetime.date.today()
+    limite_ano, limite_mes = divmod(hoje.year * 12 + hoje.month - 1 + meses, 12)
+    limite = datetime.date(limite_ano, limite_mes + 1, 1)
+    catalogo = por_id(fatos.get("certificacoes"))
+    nomes = []
+    for cid in variante.get("certificacoes") or []:
+        validade = catalogo[cid].get("validade")
+        if validade and not vencida(validade, hoje) and vencida(validade, limite):
+            nomes.append(loc(catalogo[cid].get("nome"), "pt"))
+    return nomes
+
+
 def monta_rodape(fatos, variante, idioma):
     """Idiomas e formação lado a lado."""
     r = ROTULOS[idioma]
@@ -330,8 +375,8 @@ def gerar(caminho_variante, fatos, contato, template, saida, chrome):
     """Escreve o HTML e imprime o PDF de uma variante. Devolve o caminho do PDF."""
     variante = yaml.safe_load(caminho_variante.read_text(encoding="utf-8")) or {}
     nome = variante.get("arquivo") or caminho_variante.stem
-    for certificacao in certificacoes_vencidas(fatos, variante):
-        print(f"Aviso: {certificacao} está vencida e aparece em {caminho_variante.name}.", file=sys.stderr)
+    for aviso in avisos(fatos, contato, variante):
+        print(f"Aviso ({caminho_variante.name}): {aviso}", file=sys.stderr)
     saida.mkdir(parents=True, exist_ok=True)
     arquivo_html = saida / f"{nome}.html"
     arquivo_pdf = saida / f"{nome}.pdf"
@@ -340,6 +385,10 @@ def gerar(caminho_variante, fatos, contato, template, saida, chrome):
         chrome, "--headless", "--disable-gpu", "--no-pdf-header-footer",
         f"--print-to-pdf={arquivo_pdf}", arquivo_html.as_uri(),
     ], check=True, capture_output=True)
+    paginas = paginas_do_pdf(arquivo_pdf)
+    if paginas and paginas > 1:
+        print(f"Aviso ({caminho_variante.name}): o PDF saiu com {paginas} páginas. "
+              "Corte o bullet mais fraco para esta vaga.", file=sys.stderr)
     return arquivo_pdf
 
 

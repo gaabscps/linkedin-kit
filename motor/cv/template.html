@@ -129,7 +129,7 @@ li::marker { color: var(--accent); }
 
 /* ---------- competências, idiomas, formação ---------- */
 
-.linha-skill { display: flex; gap: 8pt; margin-bottom: 3.5pt; align-items: baseline; }
+.linha-skill { display: flex; gap: 8pt; margin-bottom: 3.5pt; align-items: baseline; break-inside: avoid; }
 .linha-skill:last-child { margin-bottom: 0; }
 /* letter-spacing baixo: esticado demais, o hífen de uma palavra composta
    passa a parecer travessão. */
@@ -145,7 +145,7 @@ li::marker { color: var(--accent); }
 .rodape-secoes { display: flex; gap: 14pt; }
 .rodape-secoes > .secao { flex: 1; margin-bottom: 0; }
 
-.formacao-linha { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; }
+.formacao-linha { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; break-inside: avoid; }
 .formacao-curso { font-weight: 700; }
 .formacao-inst { color: var(--ink-soft); }
 </style>

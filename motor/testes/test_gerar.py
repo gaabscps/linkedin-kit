@@ -129,6 +129,39 @@ class TestDocumento(unittest.TestCase):
         self.assertIn("lang='en'", doc)
 
 
+class TestAvisos(unittest.TestCase):
+    CONTATO_REAL = {"email": "ana@hospital.com.br", "telefone": "+55 11 98765-4321",
+                    "links": [{"texto": "linkedin.com/in/ana", "url": "https://linkedin.com/in/ana"}]}
+
+    def test_sem_aviso_quando_esta_tudo_certo(self):
+        self.assertEqual(gerar.avisos(FATOS, self.CONTATO_REAL, VARIANTE), [])
+
+    def test_avisa_resumo_acima_de_90_palavras(self):
+        variante = {**VARIANTE, "resumo": {"pt": " ".join(["palavra"] * 91)}}
+        self.assertTrue(any("91 palavras" in a for a in gerar.avisos(FATOS, self.CONTATO_REAL, variante)))
+
+    def test_avisa_contato_com_cara_de_exemplo(self):
+        for contato in ({**self.CONTATO_REAL, "email": "ana@example.com"},
+                        {**self.CONTATO_REAL, "telefone": "(11) 90000-1234"},
+                        {**self.CONTATO_REAL, "links": [{"texto": "linkedin.com/in/ana-exemplo", "url": "x"}]}):
+            self.assertTrue(any("contato" in a for a in gerar.avisos(FATOS, contato, VARIANTE)), contato)
+
+    def test_avisa_certificacao_perto_de_vencer(self):
+        fatos = {**FATOS, "certificacoes": [{"id": "bls", "nome": "BLS", "validade": "2026-11"}]}
+        variante = {**VARIANTE, "certificacoes": ["bls"]}
+        hoje = datetime.date(2026, 9, 29)
+        self.assertEqual(gerar.certificacoes_perto_de_vencer(fatos, variante, hoje=hoje), ["BLS"])
+        self.assertEqual(gerar.certificacoes_perto_de_vencer(fatos, variante, hoje=datetime.date(2026, 6, 1)), [])
+
+    def test_conta_paginas_do_pdf(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            pdf = Path(tmp) / "x.pdf"
+            pdf.write_bytes(b"%PDF-1.4\n<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>\n")
+            self.assertEqual(gerar.paginas_do_pdf(pdf), 2)
+            pdf.write_bytes(b"%PDF-1.4\nsem arvore de paginas\n")
+            self.assertIsNone(gerar.paginas_do_pdf(pdf))
+
+
 class TestArquivos(unittest.TestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
