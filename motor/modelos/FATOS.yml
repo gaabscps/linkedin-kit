@@ -1,0 +1,105 @@
+# Banco de fatos do CV
+#
+# Fonte única de verdade do currículo. Nada de conteúdo mora no template nem nas
+# variantes: aqui ficam os fatos, lá fica só a seleção e a apresentação.
+#
+# Regras que valem para este arquivo (detalhes em motor/regras/cv.md):
+#
+# 1. O texto NASCE em português e o inglês é a tradução dele. Se um bullet
+#    mudar, mudar o `pt` primeiro e refazer o `en` a partir dele.
+# 2. Todo bullet carrega escala, posse, resultado ou dificuldade. Se não
+#    carrega nenhuma das quatro, é descrição de cargo e não entra.
+# 3. Número que não dá para confirmar entra com `verificar: true` e não vai
+#    para nenhum texto publicado até ser confirmado.
+# 4. Proibido travessão em qualquer texto.
+# 5. As `tags` NÃO escolhem nada sozinhas. Elas existem para achar candidatos
+#    rápido ao montar uma variante. Quem escolhe os bullets é gente.
+# 6. O bullet começa pelo VERBO, sem sujeito, e não pendura explicação de
+#    contexto que o cabeçalho da experiência já dá.
+#
+# Telefone, email, cidade e links NÃO moram aqui: moram em eu/cv/contato.yml,
+# que fica fora do git.
+
+identidade:
+  # Nome como aparece no LinkedIn.
+  nome:
+  # Título profissional, sem nível que a pessoa não teve.
+  titulo:
+    pt:
+    en:
+  # Onde e como a pessoa pode trabalhar (presencial, híbrido, remoto).
+  disponibilidade:
+    pt:
+    en:
+
+# ---------------------------------------------------------------------------
+# RESUMO
+#
+# O único texto reescrito por vaga. O `base` é o padrão, usado quando a
+# variante diz `resumo: base`.
+#
+# Três movimentos, nesta ordem, e nada além deles:
+#
+#   1. Quem a pessoa é e desde quando. Uma frase, com o ano de início.
+#   2. A posse principal, com o que a vaga pede citado dentro dela.
+#   3. A peça que mais conversa com ESTA vaga, com o número que a sustenta.
+#
+# Limites: máximo de 90 palavras; nenhum fato que não exista como bullet neste
+# arquivo; nada de palavra-chave solta pendurada no fim; nenhum adjetivo de
+# autoelogio (apaixonada, sólido, robusto, resiliente).
+# ---------------------------------------------------------------------------
+
+resumo:
+  base:
+    pt:
+    en:
+
+# ---------------------------------------------------------------------------
+# EXPERIÊNCIAS, da mais recente para a mais antiga.
+#
+# Cada experiência é um item com:
+#   id            identificador curto, sem espaço (usado nas variantes)
+#   empresa       nome da empresa ou instituição
+#   empresa_nota  opcional, um complemento curto entre parênteses
+#   cargo         com pt e en
+#   inicio        AAAA-MM
+#   fim           AAAA-MM, ou a palavra atual para o emprego de agora
+#   contexto      com pt e en: o que a empresa faz e o porte dela, numa frase
+#   bullets       lista de itens, cada um com:
+#                   id         identificador curto, sem espaço
+#                   tags       lista de palavras para achar o bullet depois
+#                   lente      escala, posse, resultado ou dificuldade
+#                   pt         o texto em português
+#                   en         a tradução
+#                   verificar  true quando há número ainda não confirmado
+# ---------------------------------------------------------------------------
+
+experiencias: []
+
+# ---------------------------------------------------------------------------
+# PROJETOS (opcional): o que a pessoa construiu ou conduziu por conta própria,
+# fora do cargo. Cada item com id, nome, ferramentas (lista), pt e en. A
+# descrição de projeto é prosa curta e pode ser em primeira pessoa.
+# ---------------------------------------------------------------------------
+
+projetos: []
+
+# ---------------------------------------------------------------------------
+# COMPETÊNCIAS, agrupadas, nas palavras da área da pessoa. Cada grupo com id,
+# titulo (pt e en) e itens (lista).
+# ---------------------------------------------------------------------------
+
+skills: []
+
+# ---------------------------------------------------------------------------
+# IDIOMAS: cada item com lingua (pt e en) e nivel (pt e en).
+# ---------------------------------------------------------------------------
+
+idiomas: []
+
+# ---------------------------------------------------------------------------
+# FORMAÇÃO: cada item com id, curso (pt e en), instituicao, inicio e fim (ano,
+# ou a palavra atual para quem ainda está cursando).
+# ---------------------------------------------------------------------------
+
+formacao: []

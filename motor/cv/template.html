@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<title>{{TITULO_DOC}}</title>
+<style>
+/* Apresentação do CV para impressão: uma coluna, fundo claro, fontes do sistema. */
+:root {
+  --accent: #2F5D8A;        /* filete e marcador */
+  --accent-ink: #1E3F5F;    /* texto que precisa de contraste */
+  --ink: #16181d;
+  --ink-soft: #3d4350;
+  --ink-meta: #666d7a;
+  --rule: #d9dde3;
+  --font-mono: ui-monospace, Menlo, Consolas, monospace;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, serif;
+}
+
+@page { size: A4; margin: 13mm 14mm; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 9.6pt;
+  line-height: 1.45;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-ink); text-decoration: none; }
+
+/* ---------- cabeçalho ---------- */
+
+.cabecalho { border-bottom: 2px solid var(--accent); padding-bottom: 7pt; margin-bottom: 11pt; }
+
+.nome {
+  font-size: 21pt;
+  font-weight: 700;
+  letter-spacing: -0.3pt;
+  line-height: 1.1;
+}
+
+.titulo {
+  font-size: 9pt;
+  letter-spacing: 1.6pt;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin-top: 3pt;
+}
+
+/* Fonte do corpo, e não monoespaçada: em mono o hífen sai largo e passa a
+   parecer travessão, justo na linha mais lida da página. */
+.contato {
+  font-family: var(--font-body);
+  font-size: 8.2pt;
+  color: var(--ink-meta);
+  margin-top: 6pt;
+  line-height: 1.7;
+}
+.contato .sep { color: var(--rule); padding: 0 3pt; }
+
+/* ---------- resumo ---------- */
+
+.resumo { margin-bottom: 12pt; font-size: 9.6pt; color: var(--ink-soft); }
+
+/* ---------- seções ---------- */
+
+.secao { margin-bottom: 11pt; }
+
+.secao > h2 {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  padding-bottom: 3pt;
+  margin-bottom: 7pt;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ---------- experiência ---------- */
+
+.item { margin-bottom: 9pt; break-inside: avoid; }
+.item:last-child { margin-bottom: 0; }
+
+.item-topo { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; }
+
+.item-nome { font-size: 10.4pt; font-weight: 700; }
+.item-nota { font-weight: 400; color: var(--ink-meta); font-size: 8.6pt; }
+.item-cargo { color: var(--ink-soft); font-weight: 400; font-size: 9.4pt; }
+
+.item-datas {
+  font-family: var(--font-mono);
+  font-size: 7.8pt;
+  color: var(--ink-meta);
+  white-space: nowrap;
+  text-align: right;
+}
+.item-duracao { color: var(--accent-ink); }
+
+.item-contexto {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 9.2pt;
+  color: var(--ink-soft);
+  margin: 2pt 0 4pt;
+}
+
+/* Marcador próprio no lugar do bullet padrão do navegador. */
+ul { list-style: none; }
+li {
+  position: relative;
+  padding-left: 9pt;
+  margin-bottom: 2.5pt;
+}
+li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5.2pt;
+  width: 3pt;
+  height: 3pt;
+  background: var(--accent);
+  border-radius: 0.5pt;
+}
+
+/* ---------- projetos ---------- */
+
+.projeto { margin-bottom: 7pt; break-inside: avoid; }
+.projeto:last-child { margin-bottom: 0; }
+.projeto-topo { display: flex; align-items: baseline; gap: 6pt; }
+.projeto-nome { font-weight: 700; font-size: 9.8pt; }
+.projeto-ferramentas {
+  font-size: 7.6pt;
+  color: var(--ink-meta);
+}
+.projeto-texto { color: var(--ink-soft); margin-top: 1pt; }
+
+/* ---------- competências, idiomas, formação ---------- */
+
+.linha-skill { display: flex; gap: 8pt; margin-bottom: 3.5pt; align-items: baseline; }
+.linha-skill:last-child { margin-bottom: 0; }
+/* letter-spacing baixo: esticado demais, o hífen de uma palavra composta
+   passa a parecer travessão. */
+.skill-rotulo {
+  font-size: 7.6pt;
+  text-transform: uppercase;
+  letter-spacing: 0.2pt;
+  color: var(--ink-meta);
+  flex: 0 0 34mm;
+}
+.skill-itens { flex: 1; }
+
+.rodape-secoes { display: flex; gap: 14pt; }
+.rodape-secoes > .secao { flex: 1; margin-bottom: 0; }
+
+.formacao-linha { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; }
+.formacao-curso { font-weight: 700; }
+.formacao-inst { color: var(--ink-soft); }
+</style>
+</head>
+<body>
+{{CONTEUDO}}
+</body>
+</html>

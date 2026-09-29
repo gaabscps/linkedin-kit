@@ -1,0 +1,17 @@
+# Contato que aparece no topo do CV.
+#
+# Este arquivo mora em eu/cv/contato.yml e fica FORA do git (está no
+# .gitignore). Telefone e email não entram no histórico, porque o que entra no
+# histórico do git fica lá para sempre, mesmo depois de apagado do arquivo.
+# Nenhum outro arquivo do kit repete estes valores.
+
+email:
+telefone:
+
+# Cidade e estado. Pode ser texto simples ou ter as duas línguas, com as chaves
+# pt e en.
+local:
+
+# Cada link é um item com duas chaves: texto (o que aparece escrito no PDF,
+# por exemplo o endereço sem o https) e url (o endereço completo).
+links: []

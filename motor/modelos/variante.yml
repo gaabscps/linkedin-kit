@@ -1,0 +1,43 @@
+# Variante do CV: o que entra, em que ordem e em qual idioma.
+#
+# Este arquivo NÃO contém conteúdo, só seleção. Todo texto mora em
+# eu/cv/FATOS.yml. Se um fato mudar, muda lá e todas as variantes acompanham.
+#
+# Para criar a variante de uma vaga, copie a base do idioma e faça as QUATRO
+# coisas:
+#
+#   1. Renomeie o arquivo para AAAA-MM-DD-empresa-cargo.yml
+#   2. TROQUE o campo `arquivo:` para um nome único da vaga
+#   3. Reescreva o `resumo` (regras em motor/regras/cv.md, seção "Resumo")
+#   4. Reordene a seleção de bullets
+#
+# O passo 2 é o que se esquece. O `arquivo:` dá nome ao PDF de saída, então uma
+# cópia que o mantenha sobrescreveria o PDF de outra variante. O gerador barra
+# isso antes de escrever, mas o erro ainda custa uma execução.
+
+# pt ou en
+idioma: pt
+
+# Nome do PDF, sem a extensão. Único para cada variante.
+arquivo:
+
+# `base` usa o resumo padrão do FATOS.yml. Para um resumo desta vaga, troque
+# por um bloco de texto aqui mesmo.
+resumo: base
+
+# Para trocar só a linha de disponibilidade do cabeçalho nesta vaga, descomente
+# e escreva aqui.
+# disponibilidade:
+
+# Um item por experiência: o id da experiência e a lista de ids dos bullets,
+# na ordem em que devem aparecer no PDF.
+experiencias: {}
+
+# Ids dos projetos, na ordem. Vazio quando a pessoa não tem projetos.
+projetos: []
+
+# Ids dos grupos de competências, na ordem.
+skills: []
+
+# Ids das formações, na ordem.
+formacao: []
