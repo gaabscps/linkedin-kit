@@ -40,9 +40,18 @@ Se falta o dado, pergunte. Se a pessoa não sabe, o trecho sai.
   matéria-prima ele entra com `verificar: true`, até ser confirmado.
 - **Nunca arredondar para cima.** "Uns 30%" não vira "30%"; vira pergunta, ou
   sai.
-- **Número da empresa inteira não é resultado da pessoa.** "Hospital de 200
-  leitos" entra como contexto de porte, e não como feito dela. Ela coordenou 20
-  desses leitos, e é esse o número dela.
+- **Número da empresa inteira não é resultado da pessoa.** "Escola de 1.200
+  alunos" entra como contexto de porte, e não como feito dela. Ela coordenou as
+  6 turmas do 3º ano, e é esse o número dela.
+- **Resultado só é da pessoa quando houve ação dela ligada a ele.** Um
+  indicador que melhorou no mesmo período do trabalho dela, mas por outra
+  frente (uma campanha de outro setor, uma mudança da diretoria), não é feito
+  dela. O texto não escreve "reduzi X"; no máximo, se ela quiser, "X caiu no
+  mesmo período", e só com o número confirmado.
+- **Número de contexto pode esperar.** O porte da empresa não precisa ser
+  confirmado na hora em que aparece: pode esperar a escrita dos bullets. Se
+  até lá não for confirmado, o contexto sai sem número ("hospital geral
+  privado").
 
 ---
 
@@ -118,6 +127,22 @@ permitido: o que ela devolve é a data ou o cargo, e nunca o número, a foto ou
 a cópia do documento.
 
 Data de nascimento não está nesta lista: é dado comum de formulário.
+
+---
+
+## Sigilo de terceiros
+
+Toda profissão lida com gente que confiou alguma coisa a ela: paciente,
+cliente, aluno, réu, fornecedor. **Nenhum texto identifica essa pessoa**, nem
+pelo nome nem por detalhe que permita reconhecer (data exata, idade, bairro,
+caso raro). Uma história de trabalho se conta pelo que a pessoa fez, e não
+pelo caso de quem foi atendido.
+
+**Dado interno do empregador** (resultado de auditoria interna, número de
+evento adverso, faturamento, nome de cliente da empresa) pode ficar na
+matéria-prima, mas só vai para um post ou para o perfil com o ok explícito da
+pessoa, que conhece a política da casa. Pergunte antes de publicar, e registre
+a resposta nas decisões do post.
 
 ---
 

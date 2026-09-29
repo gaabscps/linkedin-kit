@@ -114,16 +114,23 @@ posicionamento, registre também a regra de `motor/regras/escrita.md`,
 2. **Linha do tempo.** Monte a lista de experiências com empresa, cargo, mês e
    ano de início e de fim, e **confirme cada data com ela**. A linha do tempo é
    o que mais envelhece errado num currículo. Emprego atual tem fim `atual`.
+   Pergunte também se houve trabalho que não está no documento de partida:
+   antes do primeiro emprego, entre dois deles, ou ao mesmo tempo (segundo
+   emprego, plantão extra, aula, trabalho por conta própria). Documento velho
+   esquece exatamente isso.
    Mantenha no topo de `## Trajetória` duas listas, atualizadas a cada
    resposta: **"Confirmado com ela"** e **"A confirmar"**. É por elas que uma
    conversa retomada sabe o que falta perguntar.
 3. **Cada experiência, da mais recente para a mais antiga:**
    - o contexto: o que a empresa faz e o porte dela;
    - uma cena: um momento de trabalho que ela lembra bem;
-   - as quatro lentes de `motor/regras/cv.md`, uma pergunta por vez, na língua
-     da área dela: escala (quanto, quantos), posse (o que era dela e não do
-     time), resultado (o que ficou de pé depois), dificuldade (o que tornava
-     aquilo difícil).
+   - primeiro, firme os números que a própria cena trouxe: de onde veio cada
+     um, e se houve ação dela ligada ao resultado (ver "Número" em
+     `motor/regras/verdade.md`);
+   - depois, as quatro lentes de `motor/regras/cv.md` **só para o que a cena
+     não cobriu**, uma pergunta por vez, na língua da área dela: escala
+     (quanto, quantos), posse (o que era dela e não do time), resultado (o
+     que ficou de pé depois), dificuldade (o que tornava aquilo difícil).
 
    Grave cada resposta em `eu/MATERIA-PRIMA.md`, seção `## Trajetória`, numa
    subseção por experiência. Se uma história render post, anote também em

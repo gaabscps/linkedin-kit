@@ -44,6 +44,10 @@ Do assunto ao arquivo pronto para colar, no tom da pessoa.
      `grep` no texto.
    - **Todo fato tem origem**: liste cada fato do post com o arquivo de `eu/`
      de onde ele veio. Fato sem origem sai do texto ou vira pergunta.
+   - **Sigilo**, pela seção "Sigilo de terceiros" de
+     `motor/regras/verdade.md`: nada identifica paciente, cliente ou aluno, e
+     todo dado interno do empregador que está no texto tem o ok dela, com a
+     resposta registrada em `## Decisões`.
 
 7. **Gravar.** Descubra o próximo número (três dígitos, sequencial, contando
    os posts que já existem em `eu/posts/`) e um nome curto do assunto, sem
