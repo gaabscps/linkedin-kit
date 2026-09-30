@@ -38,8 +38,8 @@ pedido vira uma entrada em `eu/EXCECOES.md`. Explique por quê em uma frase: se
 a mudança fosse feita no motor, a próxima atualização apagaria.
 
 Exceção única: quando `eu/` tem só o `LEIA-ME.md` e a pessoa diz que está
-mantendo o kit (e não usando), editar o motor é permitido, seguindo a seção
-"Para quem mantém este kit" do `README.md`.
+mantendo o kit (e não usando), editar o motor é permitido, seguindo o
+`motor/MANTER.md`.
 
 ---
 

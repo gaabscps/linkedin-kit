@@ -5,6 +5,13 @@ O que mudou em cada versão do motor, da mais nova para a mais antiga. O
 escrita em português simples, dizendo o que muda para a pessoa, e não o que
 mudou no código.
 
+## v1.3.1
+
+- O `README.md` ficou mais fácil de ler, para quem é técnico e para quem não
+  é: tem desenhos de como o kit funciona, um exemplo do que sai (o post e o
+  currículo da Marina, a pessoa fictícia do kit) e a explicação passo a passo
+  da candidatura automática. Nada muda no uso.
+
 ## v1.3.0
 
 - **O Claude pode se candidatar a vagas por você.** Digite `/comecar vagas`
